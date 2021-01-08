@@ -6,6 +6,8 @@ export (Texture) var magicTex
 export (Texture) var natureTex
 
 var type: String = "none"
+var x: int 
+var y: int
 
 func set_type(newtype: String) -> void:
 	type = newtype
@@ -19,6 +21,18 @@ func set_type(newtype: String) -> void:
 		"nature":
 			change_tex(natureTex)
 
+func get_data() -> Dictionary:
+	var data = {}
+	data.x = x
+	data.y = y
+	data.pos = rect_position
+	return data
+
+func set_data(data: Dictionary) -> void:
+	x = data.x
+	y = data.y
+	rect_position = data.pos
+
 func change_tex(tex: Texture) -> void:
 	$TextureButton.texture_normal = tex
 	$TextureButton.texture_hover = tex
@@ -27,7 +41,7 @@ func change_tex(tex: Texture) -> void:
 	$TextureButton.texture_disabled = tex
 
 func clear_pressed() -> void:
-	$TextureButton.modulate = Color(0,1,0)
+	$TextureButton.modulate = Color(1,1,1)
 	$TextureButton.pressed = false
 
 func _on_TextureButton_pressed():

@@ -35,6 +35,8 @@ func generate_grid() -> void:
 			var new_tile = tile.instance()
 			add_child(new_tile)
 			new_tile.rect_position = Vector2(x*tile_size,y*tile_size)
+			new_tile.x = x
+			new_tile.y = y
 			grid[x][y] = new_tile
 			#temp_grid.append(new_tile)
 			var try: int = 0
@@ -60,6 +62,10 @@ func type_match(x,y,type) -> bool:
 func button_clicked(button: Object) -> void:
 	active_tiles.append(button)
 	if active_tiles.size() >= 2:
+		var tile_1 = active_tiles[0].get_data()
+		var tile_2 = active_tiles[1].get_data()
+		active_tiles[0].set_data(tile_2)
+		active_tiles[1].set_data(tile_1)		
 		for tile in active_tiles:
 			tile.clear_pressed()
 		active_tiles.clear()
