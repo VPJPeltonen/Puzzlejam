@@ -21,7 +21,9 @@
 	- take it safe
 	- mess with other drivers near
 
+| Puzzle types  |
+| :-:           | 
+| Tetris     	| 
+| Memory games  | 
+| Combine stuff | 
 
-# Puzzle types
-- Tetris
-- Memory games
