@@ -62,10 +62,23 @@ func type_match(x,y,type) -> bool:
 func button_clicked(button: Object) -> void:
 	active_tiles.append(button)
 	if active_tiles.size() >= 2:
+		#get data
 		var tile_1 = active_tiles[0].get_data()
 		var tile_2 = active_tiles[1].get_data()
-		active_tiles[0].set_data(tile_2)
-		active_tiles[1].set_data(tile_1)		
+		if is_valid(tile_1,tile_2):
+			active_tiles[0].set_data(tile_2)
+			active_tiles[1].set_data(tile_1)		
+			grid[tile_1.x][tile_1.y] = active_tiles[1]
+			grid[tile_2.x][tile_2.y] = active_tiles[0]
 		for tile in active_tiles:
 			tile.clear_pressed()
 		active_tiles.clear()
+
+func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
+	if tile_1.x == tile_2.x: # same row
+		if tile_1.y == tile_2.y+1 or tile_1.y == tile_2.y-1:
+			return true	
+	if tile_1.y == tile_2.y: # same column
+		if tile_1.x == tile_2.x+1 or tile_1.x == tile_2.x-1:
+			return true	
+	return false 
