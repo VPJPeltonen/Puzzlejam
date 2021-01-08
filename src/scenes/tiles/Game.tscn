@@ -1,16 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/meshlibrarys/basic.tres" type="MeshLibrary" id=3]
 [ext_resource path="res://src/scripts/Spawner.gd" type="Script" id=4]
 [ext_resource path="res://src/scenes/units/Peasant.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/AICastle.gd" type="Script" id=6]
+[ext_resource path="res://src/scripts/UI.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0.439216, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.996078, 0.0156863, 0.0156863, 1 )
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CylinderShape" id=4]
+radius = 1.76796
 
 [node name="Game" type="Spatial"]
 
 [node name="UI" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -38,6 +52,26 @@ text = "Summon"
 align = 1
 valign = 1
 
+[node name="PlayerHealth" type="ProgressBar" parent="UI"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 158.0
+custom_styles/fg = SubResource( 2 )
+value = 100.0
+percent_visible = false
+
+[node name="AIHealth" type="ProgressBar" parent="UI"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -158.0
+margin_top = -14.0
+custom_styles/fg = SubResource( 3 )
+value = 100.0
+percent_visible = false
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 1, 1 )
@@ -49,13 +83,30 @@ __meta__ = {
 }
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5.37257, 13.2108 )
+transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 8.91146, 13.9162 )
 fov = 55.0
 
 [node name="Spawner" type="Position3D" parent="." groups=[
 "Spawner",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21703, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66014, 2.17458, 4.85138 )
 script = ExtResource( 4 )
 peasant = ExtResource( 5 )
+
+[node name="Castle" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59468, 1.87926, 4.9665 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="AICastle" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.595, 1.879, 4.966 )
+mesh = SubResource( 1 )
+material/0 = null
+script = ExtResource( 6 )
+
+[node name="Area" type="Area" parent="AICastle"]
+
+[node name="CollisionShape" type="CollisionShape" parent="AICastle/Area"]
+shape = SubResource( 4 )
 [connection signal="pressed" from="UI/TileGrid/SummonButton" to="UI/TileGrid" method="_on_SummonButton_pressed"]
+[connection signal="body_entered" from="AICastle/Area" to="AICastle" method="_on_Area_body_entered"]
