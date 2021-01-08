@@ -1,4 +1,4 @@
-#Game Ideas
+# Game Ideas
 
 ## Puzzle RTS
 - Solve puzzles to spawn troops
