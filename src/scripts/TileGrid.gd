@@ -5,6 +5,8 @@ export(PackedScene) var tile
 var rng = RandomNumberGenerator.new()
 
 var grid: Array
+var ready_to_spawn: Array = []
+var mobs_to_spawn: Array = []
 
 var width: int = 6
 var height: int = 6
@@ -47,6 +49,7 @@ func generate_grid() -> void:
 				temp_type = tile_types[num]
 				new_tile.set_type(temp_type)
 				try += 1
+	$SummonButton.rect_position = Vector2((width+1)*tile_size,rect_position.y)
 
 func type_match(x,y,type) -> bool:
 	if x > 1:
@@ -85,7 +88,6 @@ func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 	return false 
 
 func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
-	#pass
 	# check for peasant
 	var parts = []
 	var first = grid[tile_1.x][tile_1.y]
@@ -106,5 +108,14 @@ func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
 				highlight([second,grid[tile_2.x-1][tile_2.y]],"peasant")
 
 func highlight(tiles: Array, type: String) -> void:
+	mobs_to_spawn.append(type)
 	for tile in tiles:
+		ready_to_spawn.append(tile)
 		tile.highlight(type)
+
+func _on_SummonButton_pressed():
+	if !mobs_to_spawn.empty():
+		mobs_to_spawn.clear()
+		ready_to_spawn.clear()
+		var spawners = get_tree().get_nodes_in_group("Spawner")
+		spawners[0].spawn()

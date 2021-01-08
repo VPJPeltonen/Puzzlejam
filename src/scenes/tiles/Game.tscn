@@ -24,6 +24,20 @@ __meta__ = {
 }
 tile = ExtResource( 2 )
 
+[node name="SummonButton" type="Button" parent="UI/TileGrid"]
+margin_right = 79.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="UI/TileGrid/SummonButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Summon"
+align = 1
+valign = 1
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 1, 1 )
@@ -38,7 +52,10 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 5.37257, 13.2108 )
 fov = 55.0
 
-[node name="Spawner" type="Position3D" parent="."]
+[node name="Spawner" type="Position3D" parent="." groups=[
+"Spawner",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21703, 0 )
 script = ExtResource( 4 )
 peasant = ExtResource( 5 )
+[connection signal="pressed" from="UI/TileGrid/SummonButton" to="UI/TileGrid" method="_on_SummonButton_pressed"]
