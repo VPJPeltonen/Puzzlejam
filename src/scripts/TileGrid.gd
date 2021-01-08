@@ -42,7 +42,7 @@ func generate_grid() -> void:
 			var try: int = 0
 			var temp_type: String = tile_types[num]
 			new_tile.set_type(temp_type)
-			while(type_match(x,y,tile_types[num]) and try < 100):
+			while(type_match(x,y,temp_type) and try < 100):
 				num = rng.randi_range(0,tile_types.size()-1)
 				temp_type = tile_types[num]
 				new_tile.set_type(temp_type)
@@ -70,6 +70,7 @@ func button_clicked(button: Object) -> void:
 			active_tiles[1].set_data(tile_1)		
 			grid[tile_1.x][tile_1.y] = active_tiles[1]
 			grid[tile_2.x][tile_2.y] = active_tiles[0]
+			check_for_units(tile_2,tile_2)
 		for tile in active_tiles:
 			tile.clear_pressed()
 		active_tiles.clear()
@@ -82,3 +83,28 @@ func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 		if tile_1.x == tile_2.x+1 or tile_1.x == tile_2.x-1:
 			return true	
 	return false 
+
+func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
+	#pass
+	# check for peasant
+	var parts = []
+	var first = grid[tile_1.x][tile_1.y]
+	var second = grid[tile_2.x][tile_2.y]
+	if first.type == "iron":
+		if tile_1.x+1 <= width-1:
+			if first.type == grid[tile_1.x+1][tile_1.y].type:
+				highlight([first,grid[tile_1.x+1][tile_1.y]],"peasant")
+		if tile_1.x+1 > 0:
+			if first.type == grid[tile_1.x-1][tile_1.y].type:
+				highlight([first,grid[tile_1.x-1][tile_1.y]],"peasant")
+	if second.type == "iron":
+		if tile_2.x+1 <= width-1:
+			if second.type == grid[tile_2.x+1][tile_2.y].type:
+				highlight([second,grid[tile_2.x+1][tile_2.y]],"peasant")
+		if tile_2.x-1 > 0:
+			if second.type == grid[tile_2.x-1][tile_2.y].type:
+				highlight([second,grid[tile_2.x-1][tile_2.y]],"peasant")
+
+func highlight(tiles: Array, type: String) -> void:
+	for tile in tiles:
+		tile.highlight(type)

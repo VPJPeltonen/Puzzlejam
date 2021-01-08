@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/icons/SpellBook01_84.PNG" type="Texture" id=1]
 [ext_resource path="res://src/scripts/Tile.gd" type="Script" id=2]
 [ext_resource path="res://assets/icons/SpellBook04_73.png" type="Texture" id=3]
 [ext_resource path="res://assets/icons/SpellBook06_28.PNG" type="Texture" id=4]
 [ext_resource path="res://assets/icons/SpellBook04_14.png" type="Texture" id=5]
+[ext_resource path="res://assets/icons/SpellBook02_20.png" type="Texture" id=6]
 
 [node name="Tile" type="Control"]
 script = ExtResource( 2 )
@@ -15,6 +16,7 @@ ironTex = ExtResource( 4 )
 woodTex = ExtResource( 5 )
 magicTex = ExtResource( 1 )
 natureTex = ExtResource( 3 )
+peasantTex = ExtResource( 6 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_right = 256.0

@@ -1,23 +1,30 @@
 Copy Siege
 
-# Peasant(torch)
+- need energy to do moves
 
-# Knight(sword)
+# Tiles
+16x16
 
-# Heavy(morningstar)
+# Units
 
-# Fast Troop (spear)
+## Peasant(torch)
 
-# archer
+## Knight(sword)
 
-# Wizard
+## Heavy(morningstar)
 
-# Wall Siege
+## Fast Troop (spear)
 
-# Wall(wood)
+## archer
 
-# Wall(stone)
+## Wizard
 
-# arrow shot
+## Wall Siege
 
-# fireball shot
+## Wall(wood)
+
+## Wall(stone)
+
+## arrow shot
+
+## fireball shot

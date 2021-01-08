@@ -5,6 +5,8 @@ export (Texture) var woodTex
 export (Texture) var magicTex
 export (Texture) var natureTex
 
+export (Texture) var peasantTex
+
 var type: String = "none"
 var x: int 
 var y: int
@@ -44,7 +46,13 @@ func clear_pressed() -> void:
 	$TextureButton.modulate = Color(1,1,1)
 	$TextureButton.pressed = false
 
+func highlight(type: String) -> void:
+	match type:
+		"peasant":
+			change_tex(peasantTex)
+
 func _on_TextureButton_pressed():
+	print("x:" + str(x) + " y:" + str(y) + " type:" + type)
 	if $TextureButton.pressed:
 		$TextureButton.modulate = Color(0.5,0.5,0.5)
 		get_parent().button_clicked(self)
