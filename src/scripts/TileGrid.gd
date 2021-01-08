@@ -115,7 +115,22 @@ func highlight(tiles: Array, type: String) -> void:
 
 func _on_SummonButton_pressed():
 	if !mobs_to_spawn.empty():
-		mobs_to_spawn.clear()
+		
+		for tile in ready_to_spawn:
+			var i: int = 1
+			while(tile.y-i > -1):
+				var tile_1 = tile.get_data()
+				var tile_2 = grid[tile_1.x][tile_1.y-i].get_data()
+				tile.set_data(tile_2)
+				grid[tile_1.x][tile_1.y-i].set_data(tile_1)		
+				grid[tile_1.x][tile_1.y] = grid[tile_1.x][tile_1.y-i]
+				grid[tile_2.x][tile_2.y] = tile
+				#i += 1
+			var num: int = rng.randi_range(0,tile_types.size()-1)
+			var temp_type: String = tile_types[num]
+			tile.set_type(temp_type)
+			#tile.to_the_top()
 		ready_to_spawn.clear()
 		var spawners = get_tree().get_nodes_in_group("Spawner")
 		spawners[0].spawn()
+		mobs_to_spawn.clear()
