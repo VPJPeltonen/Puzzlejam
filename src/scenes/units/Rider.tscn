@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
+
+[sub_resource type="CylinderMesh" id=1]
+
+[sub_resource type="CylinderShape" id=2]
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.704087
+height = 0.977556
+
+[node name="Rider" type="KinematicBody" groups=[
+"mob",
+]]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( -0.03278, 0.498924, 0, -0.498924, -0.03278, 0, 0, 0, 0.5, 0, 0.61193, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( -0.249998, -0.00185878, 0, 0.000929391, -0.499997, 0, 0, 0, 0.25, 0.297898, 0.179193, 0.274691 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -0.249998, -0.00185878, 0, 0.000929391, -0.499997, 0, 0, 0, 0.25, 0.297898, 0.179193, -0.297063 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( -0.249998, -0.00185878, 0, 0.000929391, -0.499997, 0, 0, 0, 0.25, -0.408079, 0.179193, 0.274691 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( -0.249998, -0.00185878, 0, 0.000929391, -0.499997, 0, 0, 0, 0.25, -0.408079, 0.179193, -0.297063 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( -0.202175, 0.294111, 0, -0.147056, -0.404349, 0, 0, 0, 0.25, -0.687795, 1.32786, 0.03161 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

@@ -1,6 +1,7 @@
 extends Position3D
 
 export(PackedScene) var peasant
+export(PackedScene) var rider
 
 func _ready():
 	pass # Replace with function body.

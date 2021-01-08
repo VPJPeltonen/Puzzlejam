@@ -1,6 +1,7 @@
 extends Position3D
 
 export(PackedScene) var peasant
+export(PackedScene) var rider
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

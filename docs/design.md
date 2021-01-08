@@ -9,22 +9,68 @@ Copy Siege
 
 ## Peasant(torch)
 
+| Pattern   |			|
+| :-:       |  :-:      | 
+| iron     	|  iron     | 
+
 ## Knight(sword)
+
+| Pattern   |			|
+| :-:       |  :-:      | 
+| iron     	|  iron     |
+| iron     	|  iron     |
 
 ## Heavy(morningstar)
 
+| Pattern   |			|
+| :-:       |  :-:      | 
+| iron     	|  iron     |
+| wood     	|  wood     |
+
 ## Fast Troop (spear)
+
+| Pattern   |			|			|
+| :-:       |  :-:      |  :-:      | 
+| iron     	|  iron     |  iron     | 
 
 ## archer
 
+| Pattern   |			|			|
+| :-:       |  :-:      |  :-:      | 
+| wood     	|  wood     |  wood     | 
+
 ## Wizard
 
+| Pattern   |			|
+| :-:       |  :-:      | 
+| magic     |  magic    |
+| magic     |  magic    |
+
+
 ## Wall Siege
+| Pattern   |			|
+| :-:       |  :-:      | 
+| wood      |  wood    |
+| wood      |  wood    |
 
 ## Wall(wood)
+| Pattern   |			|
+| :-:       |  :-:      | 
+| wood      |  wood    |
+| nature    |  nature    |
 
 ## Wall(stone)
+| Pattern   |			|
+| :-:       |  :-:      | 
+| iron      |  iron     |
+| nature    |  nature   |
 
 ## arrow shot
+| Pattern   |			|			|
+| :-:       |  :-:      |  :-:      | 
+| wood     	|  nature   |  wood     | 
 
 ## fireball shot
+| Pattern   |			|			|
+| :-:       |  :-:      |  :-:      | 
+| magic     |  magic    |  magic    | 
