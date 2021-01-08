@@ -11,7 +11,7 @@ Copy Siege
 
 | Pattern   |			|
 | :-:       |  :-:      | 
-| iron     	|  iron     | 
+| nature    |  iron     | 
 
 ## Knight(sword)
 
@@ -35,9 +35,11 @@ Copy Siege
 
 ## archer
 
-| Pattern   |			|			|
-| :-:       |  :-:      |  :-:      | 
-| wood     	|  wood     |  wood     | 
+| Pattern   |			|
+| :-:       |  :-:      |
+| wood     	|       	| 
+| nature    |  wood     | 
+| wood     	|       	| 
 
 ## Wizard
 
@@ -56,7 +58,7 @@ Copy Siege
 ## Wall(wood)
 | Pattern   |			|
 | :-:       |  :-:      | 
-| wood      |  wood    |
+| wood      |  wood     |
 | nature    |  nature    |
 
 ## Wall(stone)
