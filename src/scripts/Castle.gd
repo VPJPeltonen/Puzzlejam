@@ -16,8 +16,8 @@ func _ready():
 
 func _on_Area_body_entered(body):
 	if body.is_in_group("mob"):
-		if body.side == "red":
+		if body.side == "blue":
 			return
 		health -= body.attack
-		UI.AI_health_update(health)
+		UI.health_update(health)
 		body.queue_free()

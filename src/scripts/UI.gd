@@ -12,3 +12,6 @@ func _ready():
 
 func AI_health_update(amount: int) -> void:
 	$AIHealth.value = amount
+
+func health_update(amount: int) -> void:
+	$PlayerHealth.value = amount
