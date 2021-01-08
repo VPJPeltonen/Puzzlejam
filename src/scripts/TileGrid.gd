@@ -90,22 +90,19 @@ func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
 	# check for peasant
 	var parts = []
-	var first = grid[tile_1.x][tile_1.y]
-	var second = grid[tile_2.x][tile_2.y]
+	check_for_peasant(tile_1)
+	check_for_peasant(tile_2)
+
+func check_for_peasant(tile):
+	var first = grid[tile.x][tile.y]
 	if first.type == "iron":
-		if tile_1.x+1 <= width-1:
-			if first.type == grid[tile_1.x+1][tile_1.y].type:
-				highlight([first,grid[tile_1.x+1][tile_1.y]],"peasant")
-		if tile_1.x+1 > 0:
-			if first.type == grid[tile_1.x-1][tile_1.y].type:
-				highlight([first,grid[tile_1.x-1][tile_1.y]],"peasant")
-	if second.type == "iron":
-		if tile_2.x+1 <= width-1:
-			if second.type == grid[tile_2.x+1][tile_2.y].type:
-				highlight([second,grid[tile_2.x+1][tile_2.y]],"peasant")
-		if tile_2.x-1 > 0:
-			if second.type == grid[tile_2.x-1][tile_2.y].type:
-				highlight([second,grid[tile_2.x-1][tile_2.y]],"peasant")
+		if tile.x+1 <= width-1:
+			if first.type == grid[tile.x+1][tile.y].type:
+				highlight([first,grid[tile.x+1][tile.y]],"peasant")
+		if tile.x+1 > 0:
+			if first.type == grid[tile.x-1][tile.y].type:
+				highlight([first,grid[tile.x-1][tile.y]],"peasant")
+
 
 func highlight(tiles: Array, type: String) -> void:
 	mobs_to_spawn.append(type)
