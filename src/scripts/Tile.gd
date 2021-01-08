@@ -6,6 +6,7 @@ export (Texture) var magicTex
 export (Texture) var natureTex
 
 export (Texture) var peasantTex
+export (Texture) var knightTex
 
 var type: String = "none"
 var x: int 
@@ -50,6 +51,8 @@ func highlight(type: String) -> void:
 	match type:
 		"peasant":
 			change_tex(peasantTex)
+		"knight":
+			change_tex(knightTex)
 
 func _on_TextureButton_pressed():
 	print("x:" + str(x) + " y:" + str(y) + " type:" + type)

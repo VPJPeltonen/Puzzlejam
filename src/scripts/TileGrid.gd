@@ -81,17 +81,17 @@ func button_clicked(button: Object) -> void:
 func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 	if tile_1.x == tile_2.x: # same row
 		if tile_1.y == tile_2.y+1 or tile_1.y == tile_2.y-1:
-			return true	
+			return true
 	if tile_1.y == tile_2.y: # same column
 		if tile_1.x == tile_2.x+1 or tile_1.x == tile_2.x-1:
-			return true	
+			return true
 	return false 
 
 func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
-	# check for peasant
-	var parts = []
 	check_for_peasant(tile_1)
 	check_for_peasant(tile_2)
+	check_for_knights(tile_1)
+	check_for_knights(tile_2)
 
 func check_for_peasant(tile):
 	var first = grid[tile.x][tile.y]
@@ -103,7 +103,54 @@ func check_for_peasant(tile):
 			if first.type == grid[tile.x-1][tile.y].type:
 				highlight([first,grid[tile.x-1][tile.y]],"peasant")
 
-
+func check_for_knights(tile):
+	var first = grid[tile.x][tile.y]
+	var checklist = []
+	if first.type != "iron":
+		return
+	#topright
+	if tile.x+1 <= width-1 and tile.y+1 <= height-1:
+		checklist.append(first)
+		checklist.append(grid[tile.x+1][tile.y])
+		checklist.append(grid[tile.x+1][tile.y+1])
+		checklist.append(grid[tile.x][tile.y+1])
+		if check_list(checklist,"iron"):
+			highlight(checklist,"knight")
+		checklist.clear()
+	#bottomright
+	if tile.x+1 <= width-1 and tile.y-1 >= 0:
+		checklist.append(first)
+		checklist.append(grid[tile.x+1][tile.y])
+		checklist.append(grid[tile.x+1][tile.y-1])
+		checklist.append(grid[tile.x][tile.y-1])
+		if check_list(checklist,"iron"):
+			highlight(checklist,"knight")
+		checklist.clear()
+	#bottomleft
+	if tile.x-1 >= 0 and tile.y-1 >= 0:
+		checklist.append(first)
+		checklist.append(grid[tile.x-1][tile.y])
+		checklist.append(grid[tile.x-1][tile.y-1])
+		checklist.append(grid[tile.x][tile.y-1])
+		if check_list(checklist,"iron"):
+			highlight(checklist,"knight")
+		checklist.clear()	
+	#topleft
+	if tile.x-1 >= 0 and tile.y-1 <= height-1:
+		checklist.append(first)
+		checklist.append(grid[tile.x-1][tile.y])
+		checklist.append(grid[tile.x-1][tile.y+1])
+		checklist.append(grid[tile.x][tile.y+1])
+		if check_list(checklist,"iron"):
+			highlight(checklist,"knight")
+		checklist.clear()	
+		
+func check_list(list: Array, type: String) -> bool:
+	for item in list:
+		if item.type != type:
+			return false
+	return true
+	
 func highlight(tiles: Array, type: String) -> void:
 	mobs_to_spawn.append(type)
 	for tile in tiles:
@@ -112,7 +159,6 @@ func highlight(tiles: Array, type: String) -> void:
 
 func _on_SummonButton_pressed():
 	if !mobs_to_spawn.empty():
-		
 		for tile in ready_to_spawn:
 			var i: int = 1
 			while(tile.y-i > -1):
