@@ -98,6 +98,7 @@ func check_for_units(tiles: Array) -> void:
 		check_for_square(tile,"magic",["fireball"],"mage")
 		check_for_square(tile,"wood",["arrow"],"ram")
 		check_for_triple(tile,"iron",["peasant"],"spear")
+		check_for_triple(tile,"magic",["peasant"],"fireball")
 		check_for_two_layer_square(tile,"magic","iron",["fireball"],"heavy")
 
 func check_for_double(tile,resource,type):

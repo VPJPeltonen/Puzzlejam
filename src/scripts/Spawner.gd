@@ -7,6 +7,7 @@ export(PackedScene) var arrow
 export(PackedScene) var heavy
 export(PackedScene) var spear
 export(PackedScene) var ram
+export(PackedScene) var fireball
 
 var spawn_queue: Array = []
 
@@ -38,6 +39,9 @@ func spawn(type: String) -> void:
 			new_enemy = ram.instance()
 		"arrow":
 			new_enemy = arrow.instance()
+			new_enemy.projectile = true
+		"fireball":
+			new_enemy = fireball.instance()
 			new_enemy.projectile = true
 	add_child(new_enemy)
 	new_enemy.target = get_parent().get_node("AICastle")
