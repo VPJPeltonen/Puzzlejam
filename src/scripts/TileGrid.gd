@@ -88,22 +88,25 @@ func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 	return false 
 
 func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
-	check_for_peasant(tile_1)
-	check_for_peasant(tile_2)
+	check_for_double(tile_1,"nature","peasant")
+	check_for_double(tile_2,"nature","peasant")
+	check_for_double(tile_1,"wood","arrow")
+	check_for_double(tile_2,"wood","arrow")
 	check_for_square(tile_1,"iron",["peasant"],"knight")
 	check_for_square(tile_2,"iron",["peasant"],"knight")
 	check_for_square(tile_1,"magic",["fireball"],"mage")
 	check_for_square(tile_2,"magic",["fireball"],"mage")
 
-func check_for_peasant(tile):
+
+func check_for_double(tile,resource,type):
 	var first = grid[tile.x][tile.y]
-	if first.type == "iron":
+	if first.type == resource:
 		if tile.x+1 <= width-1:
-			if first.type == grid[tile.x+1][tile.y].type and "peasant" != grid[tile.x+1][tile.y].active_type:
-				highlight([first,grid[tile.x+1][tile.y]],"peasant")
+			if first.type == grid[tile.x+1][tile.y].type and type != grid[tile.x+1][tile.y].active_type:
+				highlight([first,grid[tile.x+1][tile.y]],type)
 		if tile.x+1 > 0:
-			if first.type == grid[tile.x-1][tile.y].type and "peasant" != grid[tile.x-1][tile.y].active_type:
-				highlight([first,grid[tile.x-1][tile.y]],"peasant")
+			if first.type == grid[tile.x-1][tile.y].type and type != grid[tile.x-1][tile.y].active_type:
+				highlight([first,grid[tile.x-1][tile.y]],type)
 
 func check_for_square(tile, type: String, whitelist: Array, unit_type: String):
 	var first = grid[tile.x][tile.y]
