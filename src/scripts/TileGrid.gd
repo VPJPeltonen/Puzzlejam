@@ -94,12 +94,13 @@ func check_for_units(tiles: Array) -> void:
 	for tile in tiles:
 		check_for_double(tile,"nature","peasant")
 		check_for_double(tile,"wood","arrow")
-		check_for_square(tile,"iron",["peasant"],"knight")
-		check_for_square(tile,"magic",["fireball"],"mage")
-		check_for_square(tile,"wood",["arrow"],"ram")
-		check_for_triple(tile,"iron",["peasant"],"spear")
-		check_for_triple(tile,"magic",["peasant"],"fireball")
-		check_for_two_layer_square(tile,"magic","iron",["fireball"],"heavy")
+		check_for_square(tile,"iron",["peasant","peasant"],"knight")
+		check_for_square(tile,"magic",["fireball","fireball"],"mage")
+		check_for_square(tile,"wood",["arrow","arrow"],"ram")
+		check_for_triple(tile,"iron",["peasant","peasant"],"spear")
+		check_for_triple(tile,"magic",["peasant","peasant"],"fireball")
+		check_for_two_layer_square(tile,"magic","iron",["fireball","fireball"],"heavy")
+		check_for_two_layer_square(tile,"nature","iron",["spear","peasant"],"woodwall")
 
 func check_for_double(tile,resource,type):
 	var first = grid[tile.x][tile.y]
@@ -241,7 +242,7 @@ func check_list(list: Array, type: String, whitelist: Array) -> bool:
 		if item.type != type:
 			return false
 	for item in list:
-		if item.active_type != "none" and item.active_type != whitelist[0]:
+		if item.active_type != "none" and item.active_type != whitelist[0] and item.active_type != whitelist[1]:
 			return false
 	return true
 	

@@ -8,6 +8,7 @@ export(PackedScene) var heavy
 export(PackedScene) var spear
 export(PackedScene) var ram
 export(PackedScene) var fireball
+export(PackedScene) var woodwall
 
 var spawn_queue: Array = []
 
@@ -37,6 +38,8 @@ func spawn(type: String) -> void:
 			new_enemy = spear.instance()
 		"ram":
 			new_enemy = ram.instance()
+		"woodwall":
+			new_enemy = woodwall.instance()
 		"arrow":
 			new_enemy = arrow.instance()
 			new_enemy.projectile = true
@@ -45,7 +48,7 @@ func spawn(type: String) -> void:
 			new_enemy.projectile = true
 	add_child(new_enemy)
 	new_enemy.target = get_parent().get_node("AICastle")
-	new_enemy.side = "blue"
+	new_enemy.set_side("blue")
 
 func _on_Timer_timeout():
 	if spawn_queue.empty():

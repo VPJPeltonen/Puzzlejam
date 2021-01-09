@@ -17,7 +17,7 @@ func spawn() -> void:
 	var new_enemy = peasant.instance()
 	add_child(new_enemy)
 	new_enemy.target = get_parent().get_node("Castle")
-	new_enemy.side = "red"
+	new_enemy.set_side("red")
 
 func _on_Timer_timeout():
 	spawn()

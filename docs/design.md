@@ -101,7 +101,7 @@ Copy Siege
 | :-:       	  |  :-:  |
 | Speed     	  |  0    |
 | Attack     	  |  0    |
-| Health     	  |  20   |
+| Health     	  |  10   |
 
 ## Wall(stone)
 | Pattern   |			|
@@ -113,7 +113,7 @@ Copy Siege
 | :-:       	  |  :-:  |
 | Speed     	  |  0    |
 | Attack     	  |  0    |
-| Health     	  |  40   |
+| Health     	  |  20   |
 
 ## arrow shot
 | Pattern   |			|

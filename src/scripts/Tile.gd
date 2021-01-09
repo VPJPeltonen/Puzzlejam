@@ -13,6 +13,7 @@ export (Texture) var heavyTex
 export (Texture) var spearTex
 export (Texture) var ramTex
 export (Texture) var fireballTex
+export (Texture) var woodwallTex
 
 var type: String = "none"
 var active_type: String = "none"
@@ -76,7 +77,9 @@ func highlight(type: String) -> void:
 			change_tex(ramTex)
 		"fireball":
 			change_tex(fireballTex)
-						
+		"woodwall":
+			change_tex(woodwallTex)
+									
 func _on_TextureButton_pressed():
 	print("x:" + str(x) + " y:" + str(y) + " type:" + type)
 	if $TextureButton.pressed:

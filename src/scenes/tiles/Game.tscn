@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://src/scenes/units/Spear.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/scenes/units/ram.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/scenes/units/Fireball.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/scenes/units/WoodWall.tscn" type="PackedScene" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.439216, 1, 1 )
@@ -134,6 +135,7 @@ heavy = ExtResource( 14 )
 spear = ExtResource( 15 )
 ram = ExtResource( 16 )
 fireball = ExtResource( 17 )
+woodwall = ExtResource( 18 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
 wait_time = 0.5
@@ -253,10 +255,17 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.719219, 0.694784, 0, -0.694784, 0.719219, 0, 11.2141, 0 )
+visible = false
+shadow_enabled = true
 [connection signal="pressed" from="UI/TileGrid/SummonButton" to="UI/TileGrid" method="_on_SummonButton_pressed"]
 [connection signal="timeout" from="AISpawner/Timer" to="AISpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
+[connection signal="area_shape_entered" from="Castle/Area" to="Castle" method="_on_Area_area_shape_entered"]
 [connection signal="body_entered" from="Castle/Area" to="Castle" method="_on_Area_body_entered"]
+[connection signal="area_shape_entered" from="AICastle/Area" to="AICastle" method="_on_Area_area_shape_entered"]
 [connection signal="body_entered" from="AICastle/Area" to="AICastle" method="_on_Area_body_entered"]
 [connection signal="pressed" from="LoseScreen/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="WinScreen/ContinueButton" to="." method="_on_ContinueButton_pressed"]
