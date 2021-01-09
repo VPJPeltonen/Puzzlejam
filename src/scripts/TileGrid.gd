@@ -96,6 +96,7 @@ func check_for_units(tiles: Array) -> void:
 		check_for_double(tile,"wood","arrow")
 		check_for_square(tile,"iron",["peasant"],"knight")
 		check_for_square(tile,"magic",["fireball"],"mage")
+		check_for_square(tile,"wood",["arrow"],"ram")
 		check_for_triple(tile,"iron",["peasant"],"spear")
 		check_for_two_layer_square(tile,"magic","iron",["fireball"],"heavy")
 
@@ -239,7 +240,7 @@ func check_list(list: Array, type: String, whitelist: Array) -> bool:
 		if item.type != type:
 			return false
 	for item in list:
-		if item.active_type != "none" and item.active_type != "peasant":
+		if item.active_type != "none" and item.active_type != whitelist[0]:
 			return false
 	return true
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/scenes/units/Arrow.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/scenes/units/Heavy.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/scenes/units/Spear.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/scenes/units/ram.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.439216, 1, 1 )
@@ -130,6 +131,7 @@ mage = ExtResource( 11 )
 arrow = ExtResource( 13 )
 heavy = ExtResource( 14 )
 spear = ExtResource( 15 )
+ram = ExtResource( 16 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
 wait_time = 0.5
