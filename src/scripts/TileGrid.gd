@@ -96,6 +96,7 @@ func check_for_units(tiles: Array) -> void:
 		check_for_double(tile,"wood","arrow")
 		check_for_square(tile,"iron",["peasant"],"knight")
 		check_for_square(tile,"magic",["fireball"],"mage")
+		check_for_triple(tile,"iron",["peasant"],"spear")
 		check_for_two_layer_square(tile,"magic","iron",["fireball"],"heavy")
 
 func check_for_double(tile,resource,type):
@@ -108,6 +109,35 @@ func check_for_double(tile,resource,type):
 			if first.type == grid[tile.x-1][tile.y].type and type != grid[tile.x-1][tile.y].active_type:
 				highlight([first,grid[tile.x-1][tile.y]],type)
 
+func check_for_triple(tile,resource,whitelist,type):
+	var first = grid[tile.x][tile.y]
+	var checklist = []
+	if first.type == resource:
+		#tile is leftmost
+		if tile.x-2 >= 0:
+			checklist.append(first)
+			checklist.append(grid[tile.x-1][tile.y])
+			checklist.append(grid[tile.x-2][tile.y])
+			if check_list(checklist,resource,whitelist):
+				highlight(checklist,type)
+			checklist.clear()
+		#tile is middle
+		if tile.x-1 >= 0 and tile.x+1 <= width-1:
+			checklist.append(first)
+			checklist.append(grid[tile.x-1][tile.y])
+			checklist.append(grid[tile.x+1][tile.y])
+			if check_list(checklist,resource,whitelist):
+				highlight(checklist,type)
+			checklist.clear()
+		#tile is rightmost
+		if tile.x+2 <= width-1:
+			checklist.append(first)
+			checklist.append(grid[tile.x+1][tile.y])
+			checklist.append(grid[tile.x+2][tile.y])
+			if check_list(checklist,resource,whitelist):
+				highlight(checklist,type)
+			checklist.clear()
+
 func check_for_two_layer_square(tile, b_type: String, t_type: String, whitelist: Array, unit_type: String):
 	var first = grid[tile.x][tile.y]
 	clear_checklists()
@@ -119,7 +149,6 @@ func check_for_two_layer_square(tile, b_type: String, t_type: String, whitelist:
 		top_checklist.append(grid[tile.x+1][tile.y])
 		bottom_checklist.append(grid[tile.x+1][tile.y+1])
 		bottom_checklist.append(grid[tile.x][tile.y+1])
-		#check_double_list(top_list: Array, bottom_list: Array, bottom_type: String, top_type: String, whitelist: Array)
 		if check_double_list(top_checklist, bottom_checklist, b_type,t_type,whitelist):
 			top_checklist.append(bottom_checklist[0])
 			top_checklist.append(bottom_checklist[1])
@@ -226,7 +255,7 @@ func check_double_list(top_list: Array, bottom_list: Array, bottom_type: String,
 			return false
 	for item in bottom_list:
 		if item.active_type != "none":# and item.active_type != "peasant":
-			return false			
+			return false
 	return true
 	
 func highlight(tiles: Array, type: String) -> void:
