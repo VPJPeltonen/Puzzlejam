@@ -7,7 +7,7 @@ export(PackedScene) var mage
 var spawn_queue: Array = []
 
 func _process(delta):
-	if spawn_queue.empty():
+	if spawn_queue.empty() or !Master.running:
 		return
 	if $Timer.is_stopped():
 		$Timer.start()

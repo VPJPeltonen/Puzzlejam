@@ -7,11 +7,19 @@ Copy Siege
 
 # Units
 
+| resource counts |	 	  |
+| :-:       	  |  :-:  |
+| iron     		  |  11   |
+| wood     		  |  11   |
+| magic     	  |  9    |
+| nature     	  |  7    |
+
+
 ## Peasant(torch)
 
 | Pattern   |			|
 | :-:       |  :-:      | 
-| nature    |  iron     | 
+| nature    |  nature     | 
 
 ## Knight(sword)
 
@@ -25,7 +33,7 @@ Copy Siege
 | Pattern   |			|
 | :-:       |  :-:      | 
 | iron     	|  iron     |
-| wood     	|  wood     |
+| magic     |  magic     |
 
 ## Fast Troop (spear)
 
@@ -48,7 +56,6 @@ Copy Siege
 | magic     |  magic    |
 | magic     |  magic    |
 
-
 ## Wall Siege
 | Pattern   |			|
 | :-:       |  :-:      | 
@@ -68,9 +75,9 @@ Copy Siege
 | nature    |  nature   |
 
 ## arrow shot
-| Pattern   |			|			|
-| :-:       |  :-:      |  :-:      | 
-| wood     	|  nature   |  wood     | 
+| Pattern   |			|
+| :-:       |  :-:      | 
+| wood      |  wood     | 
 
 ## fireball shot
 | Pattern   |			|			|

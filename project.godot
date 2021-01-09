@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="PuzzleJam"
 config/icon="res://icon.png"
 
+[autoload]
+
+Master="*res://src/scripts/singletons/master.gd"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
