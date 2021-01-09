@@ -2,6 +2,7 @@ extends Position3D
 
 export(PackedScene) var peasant
 export(PackedScene) var rider
+export(PackedScene) var mage
 
 var spawn_queue: Array = []
 
@@ -23,6 +24,8 @@ func spawn(type: String) -> void:
 			new_enemy = peasant.instance()
 		"knight":
 			new_enemy = rider.instance()
+		"mage":
+			new_enemy = mage.instance()
 	add_child(new_enemy)
 	new_enemy.target = get_parent().get_node("AICastle")
 	new_enemy.side = "blue"

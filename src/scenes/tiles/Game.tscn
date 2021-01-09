@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://src/scripts/AISpawner.gd" type="Script" id=8]
 [ext_resource path="res://src/scripts/Castle.gd" type="Script" id=9]
 [ext_resource path="res://src/scenes/units/Rider.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/scenes/units/Mage.tscn" type="PackedScene" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0.439216, 1, 1 )
@@ -109,6 +110,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.66014, 2.17458, 4.85138 )
 script = ExtResource( 4 )
 peasant = ExtResource( 5 )
 rider = ExtResource( 10 )
+mage = ExtResource( 11 )
 
 [node name="Timer" type="Timer" parent="Spawner"]
 wait_time = 0.5

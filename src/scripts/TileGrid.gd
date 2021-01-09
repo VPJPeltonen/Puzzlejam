@@ -90,8 +90,13 @@ func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
 	check_for_peasant(tile_1)
 	check_for_peasant(tile_2)
-	check_for_knights(tile_1)
-	check_for_knights(tile_2)
+	#check_for_knights(tile_1)
+	#check_for_knights(tile_2)
+	check_for_square(tile_1,"iron",["peasant"],"knight")
+	check_for_square(tile_2,"iron",["peasant"],"knight")
+	check_for_square(tile_1,"magic",["fireball"],"mage")
+	check_for_square(tile_2,"magic",["fireball"],"mage")
+
 
 func check_for_peasant(tile):
 	var first = grid[tile.x][tile.y]
@@ -102,6 +107,48 @@ func check_for_peasant(tile):
 		if tile.x+1 > 0:
 			if first.type == grid[tile.x-1][tile.y].type and "peasant" != grid[tile.x-1][tile.y].active_type:
 				highlight([first,grid[tile.x-1][tile.y]],"peasant")
+
+func check_for_square(tile, type: String, whitelist: Array, unit_type: String):
+	var first = grid[tile.x][tile.y]
+	var checklist = []
+	if first.type != type:
+		return
+	#topright
+	if tile.x+1 <= width-1 and tile.y+1 <= height-1:
+		checklist.append(first)
+		checklist.append(grid[tile.x+1][tile.y])
+		checklist.append(grid[tile.x+1][tile.y+1])
+		checklist.append(grid[tile.x][tile.y+1])
+		if check_list(checklist,type,whitelist):
+			highlight(checklist,unit_type)
+		checklist.clear()
+	#bottomright
+	if tile.x+1 <= width-1 and tile.y-1 >= 0:
+		checklist.append(first)
+		checklist.append(grid[tile.x+1][tile.y])
+		checklist.append(grid[tile.x+1][tile.y-1])
+		checklist.append(grid[tile.x][tile.y-1])
+		if check_list(checklist,type,whitelist):
+			highlight(checklist,unit_type)
+		checklist.clear()
+	#bottomleft
+	if tile.x-1 >= 0 and tile.y-1 >= 0:
+		checklist.append(first)
+		checklist.append(grid[tile.x-1][tile.y])
+		checklist.append(grid[tile.x-1][tile.y-1])
+		checklist.append(grid[tile.x][tile.y-1])
+		if check_list(checklist,type,whitelist):
+			highlight(checklist,unit_type)
+		checklist.clear()	
+	#topleft
+	if tile.x-1 >= 0 and tile.y+1 <= height-1:
+		checklist.append(first)
+		checklist.append(grid[tile.x-1][tile.y])
+		checklist.append(grid[tile.x-1][tile.y+1])
+		checklist.append(grid[tile.x][tile.y+1])
+		if check_list(checklist,type,whitelist):
+			highlight(checklist,unit_type)
+		checklist.clear()	
 
 func check_for_knights(tile):
 	var first = grid[tile.x][tile.y]
