@@ -1,7 +1,7 @@
 extends KinematicBody
 
 var target: Object
-var speed: int = 200
+var speed: int = 100
 var attack: int = 10
 var side: String
 var health: int = 10
