@@ -95,7 +95,6 @@ func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
 	check_for_square(tile_1,"magic",["fireball"],"mage")
 	check_for_square(tile_2,"magic",["fireball"],"mage")
 
-
 func check_for_peasant(tile):
 	var first = grid[tile.x][tile.y]
 	if first.type == "iron":

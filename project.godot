@@ -23,6 +23,11 @@ config/icon="res://icon.png"
 
 Master="*res://src/scripts/singletons/master.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

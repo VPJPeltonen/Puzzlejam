@@ -14,6 +14,8 @@ height = 0.977556
 "mob",
 ]]
 script = ExtResource( 1 )
+attack = 30
+health = 30
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -0.03278, 0.498924, 0, -0.498924, -0.03278, 0, 0, 0, 0.5, 0, 0.61193, 0 )

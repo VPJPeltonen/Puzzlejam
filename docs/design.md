@@ -65,19 +65,6 @@ Copy Siege
 | Attack     	  |  20   |
 | Health     	  |  10   |
 
-## archer
-
-| Pattern   |			|
-| :-:       |  :-:      |
-| wood     	|       	| 
-| nature    |  wood     | 
-| wood     	|       	| 
-
-| Stats 		  |	 	  |
-| :-:       	  |  :-:  |
-| Speed     	  |  0    |
-| Attack     	  |  5    |
-| Health     	  |  10   |
 
 ## Wizard
 

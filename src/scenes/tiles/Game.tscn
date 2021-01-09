@@ -82,6 +82,16 @@ custom_styles/fg = SubResource( 2 )
 value = 100.0
 percent_visible = false
 
+[node name="LevelLabel" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -20.0
+margin_right = 20.0
+margin_bottom = 14.0
+text = "Level 1"
+align = 1
+valign = 1
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 3 )
 cell_size = Vector3( 1, 1, 1 )
@@ -141,6 +151,7 @@ script = ExtResource( 6 )
 shape = SubResource( 5 )
 
 [node name="LoseScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -184,13 +195,14 @@ margin_bottom = 14.0
 text = "You Lose"
 
 [node name="WinScreen" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RestartButton" type="Button" parent="WinScreen"]
+[node name="ContinueButton" type="Button" parent="WinScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -203,7 +215,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="WinScreen/RestartButton"]
+[node name="Label" type="Label" parent="WinScreen/ContinueButton"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -212,24 +224,29 @@ margin_left = -35.5
 margin_top = -10.0
 margin_right = 35.5
 margin_bottom = 10.0
-text = "Restart"
+text = "Continue"
 align = 1
 valign = 1
 
 [node name="Label" type="Label" parent="WinScreen"]
 anchor_left = 0.5
-anchor_top = 0.2
+anchor_top = 0.3
 anchor_right = 0.5
-anchor_bottom = 0.2
-margin_left = -28.5
-margin_right = 28.5
-margin_bottom = 14.0
-text = "You Win"
+anchor_bottom = 0.3
+margin_left = -96.5
+margin_top = -15.5
+margin_right = 96.5
+margin_bottom = 15.5
+text = "You passed the level
+You can continue to next level"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="UI/TileGrid/SummonButton" to="UI/TileGrid" method="_on_SummonButton_pressed"]
 [connection signal="timeout" from="AISpawner/Timer" to="AISpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Castle/Area" to="Castle" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="AICastle/Area" to="AICastle" method="_on_Area_body_entered"]
 [connection signal="pressed" from="LoseScreen/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="pressed" from="WinScreen/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="WinScreen/ContinueButton" to="." method="_on_ContinueButton_pressed"]

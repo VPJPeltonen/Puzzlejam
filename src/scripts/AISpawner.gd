@@ -3,10 +3,12 @@ extends Position3D
 export(PackedScene) var peasant
 export(PackedScene) var rider
 
+var spawn_time: int = 10
+
 func _process(delta):
 	if Master.running:
 		if $Timer.is_stopped():
-			$Timer.start()
+			$Timer.start(spawn_time)
 	else:
 		if !$Timer.is_stopped():
 			$Timer.stop()		
