@@ -13,6 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !Master.running:
+		return
 	var dir = target.global_transform.origin - global_transform.origin
 	dir = dir.normalized()
 	move_and_slide(dir*speed*delta)

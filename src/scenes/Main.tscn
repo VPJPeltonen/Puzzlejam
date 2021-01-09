@@ -5,6 +5,7 @@
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
+level = ExtResource( 1 )
 
 [node name="MainMenu" type="Control" parent="."]
 anchor_right = 1.0
@@ -47,5 +48,7 @@ margin_right = 75.0
 margin_bottom = 14.0
 text = "Unnamed Puzzle Game"
 
-[node name="Game" parent="." instance=ExtResource( 1 )]
+[node name="GameHolder" type="Spatial" parent="."]
+
+[node name="Game" parent="GameHolder" instance=ExtResource( 1 )]
 [connection signal="pressed" from="MainMenu/VBoxContainer/Button" to="." method="_on_Button_pressed"]

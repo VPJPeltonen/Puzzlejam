@@ -21,3 +21,5 @@ func _on_Area_body_entered(body):
 		health -= body.attack
 		UI.health_update(health)
 		body.queue_free()
+		if health <= 0:
+			get_parent().game_over()
