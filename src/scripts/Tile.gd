@@ -9,6 +9,7 @@ export (Texture) var peasantTex
 export (Texture) var knightTex
 export (Texture) var mageTex
 export (Texture) var arrowTex
+export (Texture) var heavyTex
 
 var type: String = "none"
 var active_type: String = "none"
@@ -62,7 +63,8 @@ func highlight(type: String) -> void:
 			change_tex(mageTex)
 		"arrow":
 			change_tex(arrowTex)
-
+		"heavy":
+			change_tex(heavyTex)
 
 func _on_TextureButton_pressed():
 	print("x:" + str(x) + " y:" + str(y) + " type:" + type)

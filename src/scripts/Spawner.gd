@@ -4,7 +4,7 @@ export(PackedScene) var peasant
 export(PackedScene) var rider
 export(PackedScene) var mage
 export(PackedScene) var arrow
-
+export(PackedScene) var heavy
 
 var spawn_queue: Array = []
 
@@ -26,6 +26,8 @@ func spawn(type: String) -> void:
 			new_enemy = peasant.instance()
 		"knight":
 			new_enemy = rider.instance()
+		"heavy":
+			new_enemy = heavy.instance()
 		"mage":
 			new_enemy = mage.instance()
 		"arrow":

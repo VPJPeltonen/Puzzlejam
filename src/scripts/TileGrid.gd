@@ -96,7 +96,8 @@ func check_for_units(tile_1: Dictionary,tile_2: Dictionary) -> void:
 	check_for_square(tile_2,"iron",["peasant"],"knight")
 	check_for_square(tile_1,"magic",["fireball"],"mage")
 	check_for_square(tile_2,"magic",["fireball"],"mage")
-
+	check_for_two_layer_square(tile_1,"magic","iron",["fireball"],"heavy")
+	check_for_two_layer_square(tile_2,"magic","iron",["fireball"],"heavy")
 
 func check_for_double(tile,resource,type):
 	var first = grid[tile.x][tile.y]
@@ -104,9 +105,64 @@ func check_for_double(tile,resource,type):
 		if tile.x+1 <= width-1:
 			if first.type == grid[tile.x+1][tile.y].type and type != grid[tile.x+1][tile.y].active_type:
 				highlight([first,grid[tile.x+1][tile.y]],type)
-		if tile.x+1 > 0:
+		if tile.x-1 >= 0:
 			if first.type == grid[tile.x-1][tile.y].type and type != grid[tile.x-1][tile.y].active_type:
 				highlight([first,grid[tile.x-1][tile.y]],type)
+
+func check_for_two_layer_square(tile, b_type: String, t_type: String, whitelist: Array, unit_type: String):
+	var first = grid[tile.x][tile.y]
+	var top_checklist = []
+	var bottom_checklist = []
+	if first.type != b_type and first.type != t_type:
+		return
+	#topright
+	if tile.x+1 <= width-1 and tile.y+1 <= height-1:
+		top_checklist.append(first)
+		top_checklist.append(grid[tile.x+1][tile.y])
+		bottom_checklist.append(grid[tile.x+1][tile.y+1])
+		bottom_checklist.append(grid[tile.x][tile.y+1])
+		#check_double_list(top_list: Array, bottom_list: Array, bottom_type: String, top_type: String, whitelist: Array)
+		if check_double_list(top_checklist, bottom_checklist, b_type,t_type,whitelist):
+			highlight(top_checklist,unit_type)
+			highlight(bottom_checklist,unit_type)
+		top_checklist.clear()
+		bottom_checklist.clear()
+	#bottomright
+	if tile.x+1 <= width-1 and tile.y-1 >= 0:
+		bottom_checklist.append(first)
+		bottom_checklist.append(grid[tile.x+1][tile.y])
+		top_checklist.append(grid[tile.x+1][tile.y-1])
+		top_checklist.append(grid[tile.x][tile.y-1])
+		if check_double_list(top_checklist, bottom_checklist, b_type,t_type,whitelist):
+			top_checklist.append(bottom_checklist[0])
+			top_checklist.append(bottom_checklist[1])
+			highlight(top_checklist,unit_type)
+		top_checklist.clear()
+		bottom_checklist.clear()
+	#bottomleft
+	if tile.x-1 >= 0 and tile.y-1 >= 0:
+		bottom_checklist.append(first)
+		bottom_checklist.append(grid[tile.x-1][tile.y])
+		top_checklist.append(grid[tile.x-1][tile.y-1])
+		top_checklist.append(grid[tile.x][tile.y-1])
+		if check_double_list(top_checklist, bottom_checklist, b_type,t_type,whitelist):
+			top_checklist.append(bottom_checklist[0])
+			top_checklist.append(bottom_checklist[1])
+			highlight(top_checklist,unit_type)
+		top_checklist.clear()
+		bottom_checklist.clear()
+	#topleft
+	if tile.x-1 >= 0 and tile.y+1 <= height-1:
+		top_checklist.append(first)
+		top_checklist.append(grid[tile.x-1][tile.y])
+		bottom_checklist.append(grid[tile.x-1][tile.y+1])
+		bottom_checklist.append(grid[tile.x][tile.y+1])
+		if check_double_list(top_checklist, bottom_checklist, b_type,t_type,whitelist):
+			top_checklist.append(bottom_checklist[0])
+			top_checklist.append(bottom_checklist[1])
+			highlight(top_checklist,unit_type)
+		top_checklist.clear()
+		bottom_checklist.clear()
 
 func check_for_square(tile, type: String, whitelist: Array, unit_type: String):
 	var first = grid[tile.x][tile.y]
@@ -157,6 +213,21 @@ func check_list(list: Array, type: String, whitelist: Array) -> bool:
 	for item in list:
 		if item.active_type != "none" and item.active_type != "peasant":
 			return false
+	return true
+	
+func check_double_list(top_list: Array, bottom_list: Array, bottom_type: String, top_type: String, whitelist: Array) -> bool:
+	for item in top_list:
+		if item.type != top_type:
+			return false
+	for item in top_list:
+		if item.active_type != "none":# and item.active_type != "peasant":
+			return false
+	for item in bottom_list:
+		if item.type != bottom_type:
+			return false
+	for item in bottom_list:
+		if item.active_type != "none":# and item.active_type != "peasant":
+			return false			
 	return true
 	
 func highlight(tiles: Array, type: String) -> void:
