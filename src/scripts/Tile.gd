@@ -20,6 +20,7 @@ var x: int
 var y: int
 
 func set_type(newtype: String) -> void:
+	$ColorRect.color = Color(0,0,0)
 	type = newtype
 	active_type = "none"
 	match type:
@@ -56,6 +57,7 @@ func clear_pressed() -> void:
 	$TextureButton.pressed = false
 
 func highlight(type: String) -> void:
+	$ColorRect.color = Color(1,1,1)
 	active_type = type
 	match type:
 		"peasant":

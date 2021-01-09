@@ -10,7 +10,7 @@ var mobs_to_spawn: Array = []
 
 var width: int = 6
 var height: int = 6
-var tile_size: int = 32
+var tile_size: int = 34
 var tile_types: Array = ["iron","wood","magic","nature"]
 
 var active_tiles: Array
