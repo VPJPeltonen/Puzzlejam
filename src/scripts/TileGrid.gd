@@ -72,6 +72,7 @@ func button_clicked(button: Object) -> void:
 		var tile_1 = active_tiles[0].get_data()
 		var tile_2 = active_tiles[1].get_data()
 		if is_valid(tile_1,tile_2):
+			$moveSound.play()
 			active_tiles[0].set_data(tile_2)
 			active_tiles[1].set_data(tile_1)		
 			grid[tile_1.x][tile_1.y] = active_tiles[1]
@@ -262,6 +263,7 @@ func check_double_list(top_list: Array, bottom_list: Array, bottom_type: String,
 	return true
 	
 func highlight(tiles: Array, type: String) -> void:
+	$succesSound.play()
 	mobs_to_spawn.append(type)
 	for tile in tiles:
 		ready_to_spawn.append(tile)

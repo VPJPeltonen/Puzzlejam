@@ -29,6 +29,7 @@ func damage(amount: int) -> void:
 	health -= amount
 	if health <= 0:
 		$DeathTimer.start()
+		$DeathSound.play()
 		dying = true
 
 func set_side(new_side: String) -> void:
@@ -56,7 +57,7 @@ func _on_Area_area_shape_entered(area_id, area, area_shape, self_shape):
 				$blue/AnimationPlayer.play("attack")
 				$red/AnimationPlayer.play("attack")
 			area.get_parent().damage(attack)
-			if projectile:
+			if projectile and !area.get_parent().dying:
 				queue_free()
 
 func _on_DeathTimer_timeout():
