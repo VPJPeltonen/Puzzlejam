@@ -3,9 +3,18 @@ extends Position3D
 export(PackedScene) var peasant
 export(PackedScene) var rider
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+var spawn_queue: Array = []
+
+func _process(delta):
+	if spawn_queue.empty():
+		return
+	if $Timer.is_stopped():
+		$Timer.start()
+
+func spawn_list(list: Array) -> void:
+	for item in list:
+		spawn_queue.append(item)
+	#spawn_queue.append_array(list)
 
 func spawn(type: String) -> void:
 	var new_enemy
@@ -19,4 +28,6 @@ func spawn(type: String) -> void:
 	new_enemy.side = "blue"
 
 func _on_Timer_timeout():
-	pass # Replace with function body.
+	if spawn_queue.empty():
+		return
+	spawn(spawn_queue.pop_front())

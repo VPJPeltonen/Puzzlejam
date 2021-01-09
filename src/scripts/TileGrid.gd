@@ -150,8 +150,8 @@ func check_list(list: Array, type: String, whitelist: Array) -> bool:
 		if item.type != type:
 			return false
 	for item in list:
-		if item.active_type != "none":
-			pass
+		if item.active_type != "none" and item.active_type != "peasant":
+			return false
 	return true
 	
 func highlight(tiles: Array, type: String) -> void:
@@ -179,6 +179,7 @@ func _on_SummonButton_pressed():
 		ready_to_spawn.clear()
 		var spawners = get_tree().get_nodes_in_group("Spawner")
 		print(mobs_to_spawn)
-		for mob in mobs_to_spawn:
-			spawners[0].spawn(mob)
+		spawners[0].spawn_list(mobs_to_spawn)
+		#for mob in mobs_to_spawn:
+			#spawners[0].spawn(mob)
 		mobs_to_spawn.clear()
