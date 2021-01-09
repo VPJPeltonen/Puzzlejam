@@ -4,16 +4,6 @@ var health: int = 100
 
 onready var UI = get_parent().get_node("UI")
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func _on_Area_body_entered(body):
 	if body.is_in_group("mob"):
 		if body.side == "red":
@@ -21,3 +11,5 @@ func _on_Area_body_entered(body):
 		health -= body.attack
 		UI.AI_health_update(health)
 		body.queue_free()
+		if health <= 0:
+			get_parent().victory()

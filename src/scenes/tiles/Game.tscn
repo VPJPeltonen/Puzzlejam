@@ -103,7 +103,7 @@ peasant = ExtResource( 5 )
 rider = ExtResource( 10 )
 
 [node name="Timer" type="Timer" parent="AISpawner"]
-wait_time = 3.0
+wait_time = 20.0
 autostart = true
 
 [node name="Spawner" type="Position3D" parent="." groups=[
@@ -182,9 +182,54 @@ margin_left = -28.5
 margin_right = 28.5
 margin_bottom = 14.0
 text = "You Lose"
+
+[node name="WinScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartButton" type="Button" parent="WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.5
+margin_top = -10.0
+margin_right = 35.5
+margin_bottom = 10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WinScreen/RestartButton"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.5
+margin_top = -10.0
+margin_right = 35.5
+margin_bottom = 10.0
+text = "Restart"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="WinScreen"]
+anchor_left = 0.5
+anchor_top = 0.2
+anchor_right = 0.5
+anchor_bottom = 0.2
+margin_left = -28.5
+margin_right = 28.5
+margin_bottom = 14.0
+text = "You Win"
+align = 1
 [connection signal="pressed" from="UI/TileGrid/SummonButton" to="UI/TileGrid" method="_on_SummonButton_pressed"]
 [connection signal="timeout" from="AISpawner/Timer" to="AISpawner" method="_on_Timer_timeout"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Castle/Area" to="Castle" method="_on_Area_body_entered"]
 [connection signal="body_entered" from="AICastle/Area" to="AICastle" method="_on_Area_body_entered"]
 [connection signal="pressed" from="LoseScreen/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="WinScreen/RestartButton" to="." method="_on_RestartButton_pressed"]
