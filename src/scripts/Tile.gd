@@ -9,11 +9,13 @@ export (Texture) var peasantTex
 export (Texture) var knightTex
 
 var type: String = "none"
+var active_type: String = "none"
 var x: int 
 var y: int
 
 func set_type(newtype: String) -> void:
 	type = newtype
+	active_type = "none"
 	match type:
 		"iron":
 			change_tex(ironTex)
@@ -48,6 +50,7 @@ func clear_pressed() -> void:
 	$TextureButton.pressed = false
 
 func highlight(type: String) -> void:
+	active_type = type
 	match type:
 		"peasant":
 			change_tex(peasantTex)

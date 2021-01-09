@@ -97,10 +97,10 @@ func check_for_peasant(tile):
 	var first = grid[tile.x][tile.y]
 	if first.type == "iron":
 		if tile.x+1 <= width-1:
-			if first.type == grid[tile.x+1][tile.y].type:
+			if first.type == grid[tile.x+1][tile.y].type and "peasant" != grid[tile.x+1][tile.y].active_type:
 				highlight([first,grid[tile.x+1][tile.y]],"peasant")
 		if tile.x+1 > 0:
-			if first.type == grid[tile.x-1][tile.y].type:
+			if first.type == grid[tile.x-1][tile.y].type and "peasant" != grid[tile.x-1][tile.y].active_type:
 				highlight([first,grid[tile.x-1][tile.y]],"peasant")
 
 func check_for_knights(tile):
@@ -114,7 +114,7 @@ func check_for_knights(tile):
 		checklist.append(grid[tile.x+1][tile.y])
 		checklist.append(grid[tile.x+1][tile.y+1])
 		checklist.append(grid[tile.x][tile.y+1])
-		if check_list(checklist,"iron"):
+		if check_list(checklist,"iron",["peasant"]):
 			highlight(checklist,"knight")
 		checklist.clear()
 	#bottomright
@@ -123,7 +123,7 @@ func check_for_knights(tile):
 		checklist.append(grid[tile.x+1][tile.y])
 		checklist.append(grid[tile.x+1][tile.y-1])
 		checklist.append(grid[tile.x][tile.y-1])
-		if check_list(checklist,"iron"):
+		if check_list(checklist,"iron",["peasant"]):
 			highlight(checklist,"knight")
 		checklist.clear()
 	#bottomleft
@@ -132,23 +132,26 @@ func check_for_knights(tile):
 		checklist.append(grid[tile.x-1][tile.y])
 		checklist.append(grid[tile.x-1][tile.y-1])
 		checklist.append(grid[tile.x][tile.y-1])
-		if check_list(checklist,"iron"):
+		if check_list(checklist,"iron",["peasant"]):
 			highlight(checklist,"knight")
 		checklist.clear()	
 	#topleft
-	if tile.x-1 >= 0 and tile.y-1 <= height-1:
+	if tile.x-1 >= 0 and tile.y+1 <= height-1:
 		checklist.append(first)
 		checklist.append(grid[tile.x-1][tile.y])
 		checklist.append(grid[tile.x-1][tile.y+1])
 		checklist.append(grid[tile.x][tile.y+1])
-		if check_list(checklist,"iron"):
+		if check_list(checklist,"iron",["peasant"]):
 			highlight(checklist,"knight")
 		checklist.clear()	
 		
-func check_list(list: Array, type: String) -> bool:
+func check_list(list: Array, type: String, whitelist: Array) -> bool:
 	for item in list:
 		if item.type != type:
 			return false
+	for item in list:
+		if item.active_type != "none":
+			pass
 	return true
 	
 func highlight(tiles: Array, type: String) -> void:
@@ -175,5 +178,7 @@ func _on_SummonButton_pressed():
 			#tile.to_the_top()
 		ready_to_spawn.clear()
 		var spawners = get_tree().get_nodes_in_group("Spawner")
-		spawners[0].spawn()
+		print(mobs_to_spawn)
+		for mob in mobs_to_spawn:
+			spawners[0].spawn(mob)
 		mobs_to_spawn.clear()
