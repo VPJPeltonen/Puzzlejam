@@ -31,22 +31,30 @@ func spawn() -> void:
 	match num:
 		0,1:
 			new_enemy = arrow.instance()
+			new_enemy.projectile = true
 		4,5:
 			new_enemy = rider.instance()
+			new_enemy.has_animations = true
 		5:
 			new_enemy = mage.instance()
+			new_enemy.has_animations = true
 		7:
 			new_enemy = heavy.instance()
+			new_enemy.has_animations = true
 		9,10:
 			new_enemy = spear.instance()
+			new_enemy.has_animations = true
 		11:
 			new_enemy = ram.instance()
+			new_enemy.has_animations = true
 		13,14:
 			new_enemy = fireball.instance()
+			new_enemy.projectile = true
 		15:
 			new_enemy = woodwall.instance()
 		_:
 			new_enemy = peasant.instance()
+			new_enemy.has_animations = true
 	add_child(new_enemy)
 	new_enemy.target = get_parent().get_node("Castle")
 	new_enemy.set_side("red")
