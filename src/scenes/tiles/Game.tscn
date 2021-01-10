@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -38,6 +38,17 @@
 [ext_resource path="res://assets/textures/buttons/unknown2.png" type="Texture" id=36]
 [ext_resource path="res://assets/textures/buttons/loss.png" type="Texture" id=37]
 [ext_resource path="res://assets/textures/buttons/win.png" type="Texture" id=38]
+[ext_resource path="res://assets/textures/buttons/0.png" type="Texture" id=39]
+[ext_resource path="res://assets/textures/buttons/8.png" type="Texture" id=40]
+[ext_resource path="res://assets/textures/buttons/6.png" type="Texture" id=41]
+[ext_resource path="res://assets/textures/buttons/2.png" type="Texture" id=42]
+[ext_resource path="res://assets/textures/buttons/3.png" type="Texture" id=43]
+[ext_resource path="res://assets/textures/buttons/1.png" type="Texture" id=44]
+[ext_resource path="res://assets/textures/buttons/4.png" type="Texture" id=45]
+[ext_resource path="res://assets/textures/buttons/5.png" type="Texture" id=46]
+[ext_resource path="res://assets/textures/buttons/7.png" type="Texture" id=47]
+[ext_resource path="res://assets/textures/buttons/9.png" type="Texture" id=48]
+[ext_resource path="res://assets/textures/buttons/level.png" type="Texture" id=49]
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 33 )
@@ -88,6 +99,16 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+zero = ExtResource( 39 )
+one = ExtResource( 44 )
+two = ExtResource( 42 )
+three = ExtResource( 43 )
+four = ExtResource( 45 )
+five = ExtResource( 46 )
+six = ExtResource( 41 )
+seven = ExtResource( 47 )
+eight = ExtResource( 40 )
+nine = ExtResource( 48 )
 
 [node name="TileGrid" type="Control" parent="UI"]
 anchor_left = 0.45
@@ -159,6 +180,7 @@ __meta__ = {
 }
 
 [node name="LevelLabel" type="Label" parent="UI"]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -191,6 +213,44 @@ rect_min_size = Vector2( 270, 0 )
 texture = ExtResource( 30 )
 expand = true
 flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -41.0
+margin_top = -40.0
+margin_right = 41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/HBoxContainer"]
+margin_right = 54.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 54, 16 )
+texture = ExtResource( 49 )
+expand = true
+stretch_mode = 5
+
+[node name="Digit1" type="TextureRect" parent="UI/HBoxContainer"]
+margin_left = 58.0
+margin_right = 68.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 10, 16 )
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 5
+
+[node name="Digit2" type="TextureRect" parent="UI/HBoxContainer"]
+margin_left = 72.0
+margin_right = 82.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 10, 16 )
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 5
 
 [node name="GridMap" type="GridMap" parent="."]
 visible = false

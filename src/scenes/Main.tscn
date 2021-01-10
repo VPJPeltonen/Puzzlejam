@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/scenes/tiles/Game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/scripts/Main.gd" type="Script" id=2]
@@ -7,10 +7,31 @@
 [ext_resource path="res://assets/textures/buttons/logo.png" type="Texture" id=5]
 [ext_resource path="res://assets/textures/buttons/play3.png" type="Texture" id=6]
 [ext_resource path="res://assets/textures/buttons/play.png" type="Texture" id=7]
+[ext_resource path="res://assets/textures/buttons/0.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/buttons/level.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/buttons/8.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/buttons/6.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/buttons/2.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/buttons/3.png" type="Texture" id=13]
+[ext_resource path="res://assets/textures/buttons/1.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/buttons/4.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/buttons/5.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/buttons/7.png" type="Texture" id=17]
+[ext_resource path="res://assets/textures/buttons/9.png" type="Texture" id=18]
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 2 )
 level = ExtResource( 1 )
+zero = ExtResource( 8 )
+one = ExtResource( 14 )
+two = ExtResource( 12 )
+three = ExtResource( 13 )
+four = ExtResource( 15 )
+five = ExtResource( 16 )
+six = ExtResource( 11 )
+seven = ExtResource( 17 )
+eight = ExtResource( 10 )
+nine = ExtResource( 18 )
 
 [node name="MainMenu" type="Control" parent="."]
 anchor_right = 1.0
@@ -89,19 +110,43 @@ texture_disabled = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
 expand = true
 
-[node name="Label" type="Label" parent="ContinueMenu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContinueMenu"]
 anchor_left = 0.5
-anchor_top = 0.2
+anchor_top = 0.3
 anchor_right = 0.5
-anchor_bottom = 0.2
-margin_left = -75.0
-margin_right = 75.0
-margin_bottom = 14.0
-text = "Level x"
-align = 1
+anchor_bottom = 0.3
+margin_left = -41.0
+margin_right = 41.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="ContinueMenu/HBoxContainer"]
+margin_right = 54.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 54, 16 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="Digit1" type="TextureRect" parent="ContinueMenu/HBoxContainer"]
+margin_left = 58.0
+margin_right = 68.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 10, 16 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="Digit2" type="TextureRect" parent="ContinueMenu/HBoxContainer"]
+margin_left = 72.0
+margin_right = 82.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 10, 16 )
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
 
 [node name="GameHolder" type="Spatial" parent="."]
 

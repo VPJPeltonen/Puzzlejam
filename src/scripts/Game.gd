@@ -25,9 +25,15 @@ func set_level(new_level: int):
 			$AICastle.health = 120
 		4:
 			$AISpawner.spawn_time = 3
-			$AICastle.health = 120			
+			$AICastle.health = 120
+		5:
+			$AISpawner.spawn_time = 2.5
+			$AICastle.health = 130			
+		6:
+			$AISpawner.spawn_time = 2
+			$AICastle.health = 140				
 		_:
-			$AISpawner.spawn_time = max(3.0-(new_level*0.25),0.5)
+			$AISpawner.spawn_time = max(3.0-(new_level*0.25),1.0)
 			$AICastle.health = 60+(new_level*10)
 	$UI.update_AI_max_health($AICastle.health)
 
