@@ -35,11 +35,13 @@ func start() -> void:
 	$UI.show()
 
 func victory() -> void:
+	$WinSound.play()
 	Master.running = false
 	$UI.hide()
 	$WinScreen.show()	
 
 func game_over() -> void:
+	$LoseSound.play()
 	Master.running = false
 	$UI.hide()
 	$LoseScreen.show()
