@@ -1,16 +1,58 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=2]
+[ext_resource path="res://assets/models/Material.material" type="Material" id=3]
+[ext_resource path="res://src/materials/arrow_spatialmaterial.tres" type="Material" id=4]
+[ext_resource path="res://assets/textures/particles/smokeparticle3.png" type="Texture" id=5]
+[ext_resource path="res://src/scripts/arrow.gd" type="Script" id=6]
 
-[sub_resource type="CylinderMesh" id=1]
+[sub_resource type="ArrayMesh" id=1]
+resource_name = "Plane003"
+surfaces/0 = {
+"aabb": AABB( -0.5, 0, 0, 1.00001, 1.00001, 1e-05 ),
+"array_data": PoolByteArray( 255, 255, 255, 62, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 129, 0, 130, 0, 0, 127, 0, 48, 128, 54, 255, 255, 255, 62, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 129, 0, 129, 0, 0, 127, 0, 48, 0, 55, 255, 255, 255, 190, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 129, 0, 130, 0, 0, 127, 0, 49, 0, 55, 255, 255, 255, 190, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 129, 0, 129, 0, 0, 127, 0, 49, 128, 54 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
 
-[sub_resource type="CylinderShape" id=2]
-radius = 0.165346
+[sub_resource type="ArrayMesh" id=2]
+resource_name = "Plane001"
+surfaces/0 = {
+"aabb": AABB( -0.5, 0, 0, 1.00001, 1.00001, 1e-05 ),
+"array_data": PoolByteArray( 255, 255, 255, 62, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 129, 0, 130, 0, 0, 127, 0, 49, 128, 54, 255, 255, 255, 62, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 129, 0, 129, 0, 0, 127, 0, 49, 0, 55, 255, 255, 255, 190, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 129, 0, 130, 0, 0, 127, 0, 50, 0, 55, 255, 255, 255, 190, 0, 0, 128, 63, 0, 0, 0, 128, 0, 0, 129, 0, 129, 0, 0, 127, 0, 50, 128, 54 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0 ),
+"blend_shape_data": [  ],
+"format": 97559,
+"index_count": 6,
+"material": ExtResource( 3 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
 
 [sub_resource type="CylinderShape" id=3]
+radius = 0.165346
+
+[sub_resource type="CylinderShape" id=4]
 radius = 0.704087
 height = 0.977556
+
+[sub_resource type="SpatialMaterial" id=5]
+flags_transparent = true
+flags_unshaded = true
+params_cull_mode = 2
+albedo_color = Color( 1, 1, 1, 0.392157 )
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="QuadMesh" id=6]
+material = SubResource( 5 )
 
 [node name="Arrow" type="KinematicBody" groups=[
 "mob",
@@ -21,33 +63,70 @@ speed = 250
 attack = 20
 health = 1000
 
-[node name="blue" type="MeshInstance" parent="."]
-transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0.591884, 0 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="blue" type="Spatial" parent="."]
+transform = Transform( 1.19249e-09, -0.5, 1.62921e-08, 0, -8.14603e-08, -0.1, 0.1, 5.96244e-09, -1.94281e-16, 0, 0.591884, 0 )
 
-[node name="red" type="MeshInstance" parent="."]
-transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0.591884, 0 )
+[node name="arrow_1" type="Spatial" parent="blue"]
+transform = Transform( 10, 0, 0, 0, -0.0173484, 1.99993, 0, -9.99963, -0.0867421, 0, 0.0102682, 5.91862 )
+
+[node name="Plane003" type="MeshInstance" parent="blue/arrow_1"]
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = ExtResource( 4 )
+
+[node name="arrow_2" type="Spatial" parent="blue"]
+transform = Transform( 10, 0, 0, 0, -0.0173484, 1.99993, 0, -9.99963, -0.0867421, 0, 0.0102682, 5.91862 )
+visible = false
+
+[node name="Plane001" type="MeshInstance" parent="blue/arrow_2"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 4 )
+
+[node name="red" type="Spatial" parent="."]
+transform = Transform( 1.19249e-09, -0.5, 1.62921e-08, 0, -8.14603e-08, -0.1, 0.1, 5.96244e-09, -1.94281e-16, 0, 0.591884, 0 )
+visible = false
+
+[node name="arrow_3" type="Spatial" parent="red"]
+transform = Transform( 10, 0, 0, 0, -0.0173484, 1.99993, 0, -9.99963, -0.0867421, 0, 0.0102682, 5.91862 )
+
+[node name="Plane003" type="MeshInstance" parent="red/arrow_3"]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="arrow_4" type="Spatial" parent="red"]
+transform = Transform( 10, 0, 0, 0, -0.0173484, 1.99993, 0, -9.99963, -0.0867421, 0, 0.0102682, 5.91862 )
+visible = false
+
+[node name="Plane001" type="MeshInstance" parent="red/arrow_4"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, -0.0043371, -0.499981, 0, 0.499981, -0.0043371, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 volume_db = -10.0
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( -0.000750563, -2.40425e-09, -0.499999, 0.499998, -0.00105592, -0.000750562, -0.00105592, -0.499999, 1.58747e-06, 0, 0.511377, 0.41542 )
+lifetime = 0.5
+mesh = SubResource( 6 )
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 [connection signal="area_shape_entered" from="Area" to="." method="_on_Area_area_shape_entered"]
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="Timer" to="CPUParticles" method="_on_Timer_timeout"]

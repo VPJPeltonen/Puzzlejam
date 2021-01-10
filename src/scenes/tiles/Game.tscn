@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -49,6 +49,8 @@
 [ext_resource path="res://assets/textures/buttons/7.png" type="Texture" id=47]
 [ext_resource path="res://assets/textures/buttons/9.png" type="Texture" id=48]
 [ext_resource path="res://assets/textures/buttons/level.png" type="Texture" id=49]
+[ext_resource path="res://assets/textures/particles/smokeparticle2.png" type="Texture" id=50]
+[ext_resource path="res://assets/audio/boulder_drop.ogg" type="AudioStream" id=51]
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 33 )
@@ -85,6 +87,14 @@ surfaces/0 = {
 
 [sub_resource type="CylinderShape" id=5]
 radius = 1.5532
+
+[sub_resource type="SpatialMaterial" id=10]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 50 )
+
+[sub_resource type="QuadMesh" id=11]
+material = SubResource( 10 )
 
 [sub_resource type="CylinderShape" id=6]
 radius = 1.76796
@@ -162,6 +172,9 @@ margin_bottom = -16.0
 custom_styles/fg = SubResource( 9 )
 value = 100.0
 percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AIHealth" type="ProgressBar" parent="UI"]
 anchor_left = 1.0
@@ -319,6 +332,21 @@ script = ExtResource( 9 )
 [node name="CollisionShape" type="CollisionShape" parent="Castle/Area"]
 shape = SubResource( 5 )
 
+[node name="CPUParticles" type="CPUParticles" parent="Castle"]
+transform = Transform( 0.383602, -0.923498, 0, 0.923498, 0.383602, 0, 0, 0, 1, 1.49568, 2.64504, 0 )
+emitting = false
+amount = 32
+one_shot = true
+local_coords = false
+mesh = SubResource( 11 )
+initial_velocity = 5.0
+initial_velocity_random = 1.0
+scale_amount = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Castle"]
+stream = ExtResource( 51 )
+volume_db = -10.0
+
 [node name="AICastle" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.595, 0.371768, 4.966 )
 script = ExtResource( 6 )
@@ -327,6 +355,21 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="AICastle/Area"]
 shape = SubResource( 6 )
+
+[node name="CPUParticles" type="CPUParticles" parent="AICastle"]
+transform = Transform( -0.657112, -0.753793, 0, 0.753793, -0.657112, 0, 0, 0, 1, -2.4073, 2.70186, 0.000499725 )
+emitting = false
+amount = 32
+one_shot = true
+local_coords = false
+mesh = SubResource( 11 )
+initial_velocity = 5.0
+initial_velocity_random = 1.0
+scale_amount = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AICastle"]
+stream = ExtResource( 51 )
+volume_db = -10.0
 
 [node name="LoseScreen" type="Control" parent="."]
 visible = false

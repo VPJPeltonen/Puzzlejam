@@ -22,6 +22,8 @@ func _on_Area_area_shape_entered(area_id, area, area_shape, self_shape):
 		if area.get_parent().side == "red":
 			return
 		health -= area.get_parent().attack
+		$CPUParticles.emitting = true
+		$AudioStreamPlayer.play()
 		UI.AI_health_update(health)
 		area.get_parent().queue_free()
 		if health <= 0:
