@@ -29,6 +29,7 @@ var mouse_follow: bool = false
 func _process(delta):
 	if mouse_follow:
 		rect_position = Vector2(get_global_mouse_position().x-16,get_global_mouse_position().y-16)
+		rect_position = rect_position-get_parent().rect_position
 		return
 	#if moving:
 	rect_position = rect_position.linear_interpolate(target_pos,slide_speed*delta)
@@ -107,12 +108,13 @@ func _on_TextureButton_pressed():
 		$TextureButton.modulate = Color(1,1,1)
 
 func _on_TextureButton_button_down():
-	$TextureButton.modulate = Color(0.5,0.5,0.5)
+	#$TextureButton.modulate = Color(0.5,0.5,0.5)
+	$Chosen.show()
 	mouse_follow = true
 
 func _on_TextureButton_button_up():
 	mouse_follow = false
-	$TextureButton.modulate = Color(1,1,1)
+	$Chosen.hide()
 	var x_dif = target_pos.x - rect_position.x
 	var y_dif = target_pos.y - rect_position.y
 	if abs(x_dif) < abs(y_dif):

@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=2]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=4]
 
-[sub_resource type="CylinderShape" id=15]
+[sub_resource type="CylinderShape" id=1]
 
-[sub_resource type="CylinderShape" id=16]
+[sub_resource type="CylinderShape" id=2]
 radius = 0.704087
 height = 0.977556
 
@@ -57,7 +58,7 @@ bind/9/name = "cape_2"
 bind/9/bone = -1
 bind/9/pose = Transform( 1.74005e-07, 0.405164, -0.914244, 1.15473e-06, -0.914244, -0.405163, -0.999996, 1.45221e-07, -3.27689e-07, -0.70807, 0.311025, -2.69902e-07 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "attack"
 length = 1.45833
 tracks/0/type = "transform"
@@ -131,7 +132,7 @@ tracks/9/imported = true
 tracks/9/enabled = true
 tracks/9/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0122357, -1.42111e-14, -6.28664e-17, 0.999925, 1, 1.0063, 1.0004, 0.133333, 1, 0, 0, 0, -0.0404904, -7.0996e-15, -2.87702e-16, 0.99918, 1, 1.02082, 1.00131, 0.333333, 1, 0, 0, 0, -0.148975, -2.16077e-14, 3.37482e-16, 0.988841, 1, 1.07672, 1.00483, 0.4, 1, 0, 0, 0, -0.164216, -2.0259e-15, -2.37539e-08, 0.986424, 1, 1.08467, 1.00533, 0.466667, 1, 0, 0, 0, -0.165247, -2.0938e-14, -3.95568e-08, 0.986252, 1, 1.08546, 1.00536, 0.533333, 1, 0, 0, 0, -0.159141, -2.74391e-14, -3.9474e-08, 0.987256, 1, 1.08397, 1.00519, 0.6, 1, 0, 0, 0, -0.14094, -2.08584e-14, -3.94349e-08, 0.990018, 1, 1.0793, 1.00469, 0.666667, 1, 0, 0, 0, -0.105785, -1.76405e-14, -3.94914e-08, 0.994389, 1, 1.07017, 1.00376, 0.733333, 1, -1.33227e-16, 0.01875, 1.11759e-09, -0.0143846, -4.7467e-15, -1.69243e-08, 0.999897, 1, 1.04758, 1.00211, 0.8, 1, -4.30211e-16, 0.0605469, 3.60887e-09, 0.0948273, -2.38663e-14, 2.30511e-08, 0.995494, 1, 0.991107, 0.99959, 0.933333, 1, -4.16333e-17, 0.00585937, 3.49246e-10, 0.042874, -2.57809e-14, 1.73906e-08, 0.99908, 1, 0.844556, 0.994001, 1, 1, 0, 0, 0, 0.0374251, -2.77195e-14, 8.89369e-09, 0.999299, 1, 0.780174, 0.995016, 1.06667, 1, 0, 0, 0, 0.0278418, -2.09692e-10, 1.59076e-08, 0.999612, 1, 0.856842, 0.998694, 1.13333, 1, 0, 0, 0, 0.00407569, -1.839e-14, 8.89364e-09, 0.999992, 1, 1.07008, 1.00001, 1.2, 1, 0, 0, 0, 0.00205739, -4.19388e-14, 8.8934e-09, 0.999998, 1, 1.02628, 1, 1.26667, 1, 0, 0, 0, 0.00085737, -2.06458e-14, 8.89323e-09, 1, 1, 1, 1, 1.33333, 1, 0, 0, 0, 0.000230106, -2.84168e-14, 8.89314e-09, 1, 1, 1, 1, 1.45833, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=6]
 resource_name = "heavy_ArmatureAction"
 length = 0.001
 tracks/0/type = "transform"
@@ -205,7 +206,7 @@ tracks/9/imported = true
 tracks/9/enabled = true
 tracks/9/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=7]
 resource_name = "hurt"
 length = 0.583333
 tracks/0/type = "transform"
@@ -403,7 +404,7 @@ bind/9/name = "cape_2"
 bind/9/bone = -1
 bind/9/pose = Transform( 1.74005e-07, 0.405164, -0.914244, 1.15473e-06, -0.914244, -0.405163, -0.999996, 1.45221e-07, -3.27689e-07, -0.70807, 0.311025, -2.69902e-07 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=11]
 resource_name = "attack"
 length = 1.45833
 tracks/0/type = "transform"
@@ -477,8 +478,7 @@ tracks/9/imported = true
 tracks/9/enabled = true
 tracks/9/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0122357, -1.42111e-14, -6.28664e-17, 0.999925, 1, 1.0063, 1.0004, 0.133333, 1, 0, 0, 0, -0.0404904, -7.0996e-15, -2.87702e-16, 0.99918, 1, 1.02082, 1.00131, 0.333333, 1, 0, 0, 0, -0.148975, -2.16077e-14, 3.37482e-16, 0.988841, 1, 1.07672, 1.00483, 0.4, 1, 0, 0, 0, -0.164216, -2.0259e-15, -2.37539e-08, 0.986424, 1, 1.08467, 1.00533, 0.466667, 1, 0, 0, 0, -0.165247, -2.0938e-14, -3.95568e-08, 0.986252, 1, 1.08546, 1.00536, 0.533333, 1, 0, 0, 0, -0.159141, -2.74391e-14, -3.9474e-08, 0.987256, 1, 1.08397, 1.00519, 0.6, 1, 0, 0, 0, -0.14094, -2.08584e-14, -3.94349e-08, 0.990018, 1, 1.0793, 1.00469, 0.666667, 1, 0, 0, 0, -0.105785, -1.76405e-14, -3.94914e-08, 0.994389, 1, 1.07017, 1.00376, 0.733333, 1, -1.33227e-16, 0.01875, 1.11759e-09, -0.0143846, -4.7467e-15, -1.69243e-08, 0.999897, 1, 1.04758, 1.00211, 0.8, 1, -4.30211e-16, 0.0605469, 3.60887e-09, 0.0948273, -2.38663e-14, 2.30511e-08, 0.995494, 1, 0.991107, 0.99959, 0.933333, 1, -4.16333e-17, 0.00585937, 3.49246e-10, 0.042874, -2.57809e-14, 1.73906e-08, 0.99908, 1, 0.844556, 0.994001, 1, 1, 0, 0, 0, 0.0374251, -2.77195e-14, 8.89369e-09, 0.999299, 1, 0.780174, 0.995016, 1.06667, 1, 0, 0, 0, 0.0278418, -2.09692e-10, 1.59076e-08, 0.999612, 1, 0.856842, 0.998694, 1.13333, 1, 0, 0, 0, 0.00407569, -1.839e-14, 8.89364e-09, 0.999992, 1, 1.07008, 1.00001, 1.2, 1, 0, 0, 0, 0.00205739, -4.19388e-14, 8.8934e-09, 0.999998, 1, 1.02628, 1, 1.26667, 1, 0, 0, 0, 0.00085737, -2.06458e-14, 8.89323e-09, 1, 1, 1, 1, 1.33333, 1, 0, 0, 0, 0.000230106, -2.84168e-14, 8.89314e-09, 1, 1, 1, 1, 1.45833, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "heavy_ArmatureAction"
+[sub_resource type="Animation" id=12]
 length = 0.001
 tracks/0/type = "transform"
 tracks/0/path = NodePath("heavy_Armature/Skeleton:feather")
@@ -551,8 +551,7 @@ tracks/9/imported = true
 tracks/9/enabled = true
 tracks/9/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "hurt"
+[sub_resource type="Animation" id=13]
 length = 0.583333
 tracks/0/type = "transform"
 tracks/0/path = NodePath("heavy_Armature/Skeleton:feather")
@@ -710,13 +709,13 @@ health = 40
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="blue" type="Spatial" parent="."]
 transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 0, 0, 0 )
@@ -778,13 +777,13 @@ bones/9/bound_children = [  ]
 [node name="Heavy" type="MeshInstance" parent="blue/heavy_Armature/Skeleton"]
 mesh = SubResource( 3 )
 skin = SubResource( 4 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blue"]
 autoplay = "walk"
-anims/attack = SubResource( 7 )
-anims/heavy_ArmatureAction = SubResource( 17 )
-anims/hurt = SubResource( 18 )
+anims/attack = SubResource( 5 )
+anims/heavy_ArmatureAction = SubResource( 6 )
+anims/hurt = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
 [node name="red" type="Spatial" parent="."]
@@ -847,13 +846,13 @@ bones/9/bound_children = [  ]
 [node name="Heavy" type="MeshInstance" parent="red/heavy_Armature/Skeleton"]
 mesh = SubResource( 9 )
 skin = SubResource( 10 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="red"]
 autoplay = "walk"
-anims/attack = SubResource( 13 )
-anims/heavy_ArmatureAction = SubResource( 11 )
-anims/hurt = SubResource( 12 )
+anims/attack = SubResource( 11 )
+anims/heavy_ArmatureAction = SubResource( 12 )
+anims/hurt = SubResource( 13 )
 anims/walk = SubResource( 14 )
 
 [node name="DeathTimer" type="Timer" parent="."]

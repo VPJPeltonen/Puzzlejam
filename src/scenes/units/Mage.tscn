@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=2]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=4]
 
-[sub_resource type="CylinderShape" id=15]
+[sub_resource type="CylinderShape" id=1]
 
-[sub_resource type="CylinderShape" id=16]
+[sub_resource type="CylinderShape" id=2]
 radius = 0.704087
 height = 0.977556
 
@@ -42,7 +43,7 @@ bind/4/name = "tail_2"
 bind/4/bone = -1
 bind/4/pose = Transform( 1, 7.13293e-12, -3.35458e-11, 1.40241e-11, -0.978126, -0.208041, 3.5655e-11, 0.208013, -0.978273, -5.5699e-12, 0.71264, -0.162437 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 resource_name = "attack"
 length = 0.791667
 tracks/0/type = "transform"
@@ -81,7 +82,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0328729, 0, 0, 0.99946, 1, 0.891433, 1, 0.133333, 1, 0, 0, 0, -0.0543831, -2.58877e-26, 1.33331e-17, 0.99852, 1, 0.812714, 1, 0.2, 1, 0, 0, 0, 0.0222202, -2.58558e-26, 1.34422e-17, 0.999753, 1, 0.950637, 1, 0.266667, 1, 0, 0, 0, 0.143523, 1.04479e-25, 1.34225e-17, 0.989647, 1, 1.11442, 1, 0.333333, 1, 0, 0.091722, 0, 0.211027, -8.46238e-25, -4.68575e-17, 0.97748, 1, 1.13862, 1, 0.4, 1, 0, 0.0747364, 0, 0.201713, 8.4454e-25, -4.68506e-17, 0.979445, 1, 1.10045, 1, 0.466667, 1, 0, 0.0414447, 0, 0.17843, -8.40671e-25, -4.68444e-17, 0.983953, 1, 1.05202, 1, 0.533333, 1, 0, 0.0101913, 0, 0.143024, -1.25366e-24, -4.68476e-17, 0.989719, 1, 1.01232, 1, 0.6, 1, 0, 0, 0, 0.0990512, -2.07817e-25, -2.46126e-17, 0.995082, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0.0527191, -5.17708e-26, -2.46202e-17, 0.998609, 1, 1, 1, 0.733333, 1, 0, 0, 0, 0.0178583, -7.75606e-26, -2.46141e-17, 0.999841, 1, 1, 1, 0.791667, 1, 0, 0, 0, 0.00454522, 6.46242e-27, -2.46076e-17, 0.99999, 1, 1, 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "hurt"
 length = 1.08333
 tracks/0/type = "transform"
@@ -120,9 +121,10 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -0.0859039, -1.03781e-25, 1.90745e-17, 0.996303, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.125, 0.00670483, -0.0032906, 0.992129, 0.999978, 0.861832, 0.989764, 0.133333, 1, 0, 0, 0, -0.154836, 0.0120914, -0.00593422, 0.987849, 0.999961, 0.750317, 0.981522, 0.2, 1, 0, 0, 0, -0.122558, 0.0101835, -0.00499784, 0.992397, 0.999967, 0.784616, 0.984321, 0.333333, 1, 0, 0, 0, 0.00797364, 0.00243469, -0.0011949, 0.999965, 0.999992, 0.926882, 0.995638, 0.4, 1, 0, 0, 0, 0.0442276, 0.000271448, -0.000133221, 0.999022, 0.999999, 0.974571, 0.99902, 0.466667, 1, 0, 0, 0, 0.043322, -1.00055e-18, 5.24014e-18, 0.999061, 1, 0.990787, 0.999737, 0.533333, 1, 0, 0, 0, 0.0267144, -1.00052e-18, 5.24e-18, 0.999643, 1, 0.99719, 0.99992, 0.6, 1, 0, 0, 0, 0.00902591, -1.00061e-18, 5.24047e-18, 0.999959, 1, 0.999575, 0.999988, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.08333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "walk"
 length = 2.08333
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("wiz_Armature/Skeleton:head_2")
 tracks/0/interp = 1
@@ -159,7 +161,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, -0.087156, 0, 0.996195, 1, 1, 1, 0.0666667, 1, 0, 0.0007984, 0, 0, -0.0841695, 0, 0.996452, 1, 1, 1, 0.133333, 1, 0, 0.0028448, 0, 0, -0.076502, 0, 0.997069, 1, 1, 1, 0.2, 1, 0, 0.0060576, 0, 0, -0.0644303, 0, 0.997922, 1, 1, 1, 0.8, 1, 0, 0.0539424, 0, 0, 0.116992, 0, 0.993133, 1, 1, 1, 0.866667, 1, 0, 0.0577696, 0, 0, 0.13132, 0, 0.99134, 1, 1, 1, 0.933333, 1, 0, 0.0605552, 0, 0, 0.141705, 0, 0.989909, 1, 1, 1, 1, 1, 0, 0.062208, 0, 0, 0.147849, 0, 0.98901, 1, 1, 1, 1.06667, 1, 0, 0.0623248, 0, 0, 0.148281, 0, 0.988945, 1, 1, 1, 1.13333, 1, 0, 0.0610944, 0, 0, 0.143696, 0, 0.989622, 1, 1, 1, 1.2, 1, 0, 0.0585728, 0, 0, 0.134279, 0, 0.990944, 1, 1, 1, 1.26667, 1, 0, 0.0549712, 0, 0, 0.120782, 0, 0.992679, 1, 1, 1, 1.86667, 1, 0, 0.00701429, 0, 0, -0.0606018, 0, 0.998162, 1, 1, 1, 1.93333, 1, 0, 0.00356631, 0, 0, -0.073511, 0, 0.997294, 1, 1, 1, 2, 1, 0, 0.00113596, 0, 0, -0.0825862, 0, 0.996584, 1, 1, 1, 2.06667, 1, 0, 0.000116791, 0, 0, -0.0865878, 0, 0.996244, 1, 1, 1, 2.08333, 1, 0, 0, 0, 0, -0.0871558, 0, 0.996195, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=8]
 resource_name = "wiz_ArmatureAction"
 length = 0.001
 loop = true
@@ -233,7 +235,7 @@ bind/4/name = "tail_2"
 bind/4/bone = -1
 bind/4/pose = Transform( 1, 7.13293e-12, -3.35458e-11, 1.40241e-11, -0.978126, -0.208041, 3.5655e-11, 0.208013, -0.978273, -5.5699e-12, 0.71264, -0.162437 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=15]
 resource_name = "attack"
 length = 0.791667
 tracks/0/type = "transform"
@@ -272,7 +274,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.0328729, 0, 0, 0.99946, 1, 0.891433, 1, 0.133333, 1, 0, 0, 0, -0.0543831, -2.58877e-26, 1.33331e-17, 0.99852, 1, 0.812714, 1, 0.2, 1, 0, 0, 0, 0.0222202, -2.58558e-26, 1.34422e-17, 0.999753, 1, 0.950637, 1, 0.266667, 1, 0, 0, 0, 0.143523, 1.04479e-25, 1.34225e-17, 0.989647, 1, 1.11442, 1, 0.333333, 1, 0, 0.091722, 0, 0.211027, -8.46238e-25, -4.68575e-17, 0.97748, 1, 1.13862, 1, 0.4, 1, 0, 0.0747364, 0, 0.201713, 8.4454e-25, -4.68506e-17, 0.979445, 1, 1.10045, 1, 0.466667, 1, 0, 0.0414447, 0, 0.17843, -8.40671e-25, -4.68444e-17, 0.983953, 1, 1.05202, 1, 0.533333, 1, 0, 0.0101913, 0, 0.143024, -1.25366e-24, -4.68476e-17, 0.989719, 1, 1.01232, 1, 0.6, 1, 0, 0, 0, 0.0990512, -2.07817e-25, -2.46126e-17, 0.995082, 1, 1, 1, 0.666667, 1, 0, 0, 0, 0.0527191, -5.17708e-26, -2.46202e-17, 0.998609, 1, 1, 1, 0.733333, 1, 0, 0, 0, 0.0178583, -7.75606e-26, -2.46141e-17, 0.999841, 1, 1, 1, 0.791667, 1, 0, 0, 0, 0.00454522, 6.46242e-27, -2.46076e-17, 0.99999, 1, 1, 1 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "hurt"
 length = 1.08333
 tracks/0/type = "transform"
@@ -311,7 +313,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, -0.0859039, -1.03781e-25, 1.90745e-17, 0.996303, 1, 1, 1, 0.0666667, 1, 0, 0, 0, -0.125, 0.00670483, -0.0032906, 0.992129, 0.999978, 0.861832, 0.989764, 0.133333, 1, 0, 0, 0, -0.154836, 0.0120914, -0.00593422, 0.987849, 0.999961, 0.750317, 0.981522, 0.2, 1, 0, 0, 0, -0.122558, 0.0101835, -0.00499784, 0.992397, 0.999967, 0.784616, 0.984321, 0.333333, 1, 0, 0, 0, 0.00797364, 0.00243469, -0.0011949, 0.999965, 0.999992, 0.926882, 0.995638, 0.4, 1, 0, 0, 0, 0.0442276, 0.000271448, -0.000133221, 0.999022, 0.999999, 0.974571, 0.99902, 0.466667, 1, 0, 0, 0, 0.043322, -1.00055e-18, 5.24014e-18, 0.999061, 1, 0.990787, 0.999737, 0.533333, 1, 0, 0, 0, 0.0267144, -1.00052e-18, 5.24e-18, 0.999643, 1, 0.99719, 0.99992, 0.6, 1, 0, 0, 0, 0.00902591, -1.00061e-18, 5.24047e-18, 0.999959, 1, 0.999575, 0.999988, 0.666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1.08333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 resource_name = "walk"
 length = 2.08333
 loop = true
@@ -351,8 +353,7 @@ tracks/4/imported = true
 tracks/4/enabled = true
 tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, -0.087156, 0, 0.996195, 1, 1, 1, 0.0666667, 1, 0, 0.0007984, 0, 0, -0.0841695, 0, 0.996452, 1, 1, 1, 0.133333, 1, 0, 0.0028448, 0, 0, -0.076502, 0, 0.997069, 1, 1, 1, 0.2, 1, 0, 0.0060576, 0, 0, -0.0644303, 0, 0.997922, 1, 1, 1, 0.8, 1, 0, 0.0539424, 0, 0, 0.116992, 0, 0.993133, 1, 1, 1, 0.866667, 1, 0, 0.0577696, 0, 0, 0.13132, 0, 0.99134, 1, 1, 1, 0.933333, 1, 0, 0.0605552, 0, 0, 0.141705, 0, 0.989909, 1, 1, 1, 1, 1, 0, 0.062208, 0, 0, 0.147849, 0, 0.98901, 1, 1, 1, 1.06667, 1, 0, 0.0623248, 0, 0, 0.148281, 0, 0.988945, 1, 1, 1, 1.13333, 1, 0, 0.0610944, 0, 0, 0.143696, 0, 0.989622, 1, 1, 1, 1.2, 1, 0, 0.0585728, 0, 0, 0.134279, 0, 0.990944, 1, 1, 1, 1.26667, 1, 0, 0.0549712, 0, 0, 0.120782, 0, 0.992679, 1, 1, 1, 1.86667, 1, 0, 0.00701429, 0, 0, -0.0606018, 0, 0.998162, 1, 1, 1, 1.93333, 1, 0, 0.00356631, 0, 0, -0.073511, 0, 0.997294, 1, 1, 1, 2, 1, 0, 0.00113596, 0, 0, -0.0825862, 0, 0.996584, 1, 1, 1, 2.06667, 1, 0, 0.000116791, 0, 0, -0.0865878, 0, 0.996244, 1, 1, 1, 2.08333, 1, 0, 0, 0, 0, -0.0871558, 0, 0.996195, 1, 1, 1 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "wiz_ArmatureAction"
+[sub_resource type="Animation" id=14]
 length = 0.001
 tracks/0/type = "transform"
 tracks/0/path = NodePath("wiz_Armature/Skeleton:head_2")
@@ -399,13 +400,13 @@ health = 20
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="blue" type="Spatial" parent="."]
 transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 0, 0, 0 )
@@ -442,14 +443,14 @@ bones/4/bound_children = [  ]
 [node name="BlueWiz" type="MeshInstance" parent="blue/wiz_Armature/Skeleton"]
 mesh = SubResource( 3 )
 skin = SubResource( 4 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blue"]
 autoplay = "walk"
-anims/attack = SubResource( 17 )
-anims/hurt = SubResource( 7 )
-anims/walk = SubResource( 8 )
-anims/wiz_ArmatureAction = SubResource( 18 )
+anims/attack = SubResource( 5 )
+anims/hurt = SubResource( 6 )
+anims/walk = SubResource( 7 )
+anims/wiz_ArmatureAction = SubResource( 8 )
 
 [node name="red" type="Spatial" parent="."]
 transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 0, 0, 0 )
@@ -486,14 +487,14 @@ bones/4/bound_children = [  ]
 [node name="BlueWiz" type="MeshInstance" parent="red/wiz_Armature/Skeleton"]
 mesh = SubResource( 9 )
 skin = SubResource( 10 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="red"]
 autoplay = "walk"
-anims/attack = SubResource( 12 )
-anims/hurt = SubResource( 13 )
-anims/walk = SubResource( 14 )
-anims/wiz_ArmatureAction = SubResource( 11 )
+anims/attack = SubResource( 15 )
+anims/hurt = SubResource( 12 )
+anims/walk = SubResource( 13 )
+anims/wiz_ArmatureAction = SubResource( 14 )
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 0.5

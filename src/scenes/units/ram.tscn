@@ -1,12 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=2]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=4]
 
-[sub_resource type="CylinderShape" id=15]
+[sub_resource type="CylinderShape" id=1]
 
-[sub_resource type="CylinderShape" id=16]
+[sub_resource type="CylinderShape" id=2]
 radius = 0.704087
 height = 0.977556
 
@@ -66,7 +67,7 @@ bind/12/name = "rat_foot_2_r"
 bind/12/bone = -1
 bind/12/pose = Transform( -0.160927, -0.0241959, 0.98667, 0.986959, 5.75092e-08, 0.160974, -0.00389499, 0.999707, 0.0238805, 0.65971, -0.519258, -0.013831 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 resource_name = "attack"
 length = 0.75
 tracks/0/type = "transform"
@@ -161,7 +162,7 @@ tracks/12/imported = true
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.996349, 1, 0.2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.95462, 1, 0.266667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.934273, 1, 0.333333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.969265, 1, 0.4, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.01941, 1, 0.466667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.04012, 1, 0.533333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.01505, 1, 0.6, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.75, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=6]
 resource_name = "battering_rat_armatureAction"
 length = 0.001
 tracks/0/type = "transform"
@@ -505,7 +506,7 @@ bind/12/name = "rat_foot_2_r"
 bind/12/bone = -1
 bind/12/pose = Transform( -0.160927, -0.0241959, 0.98667, 0.986959, 5.75092e-08, 0.160974, -0.00389499, 0.999707, 0.0238805, 0.65971, -0.519258, -0.013831 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 resource_name = "attack"
 length = 0.75
 tracks/0/type = "transform"
@@ -600,8 +601,7 @@ tracks/12/imported = true
 tracks/12/enabled = true
 tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.0666667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.133333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.996349, 1, 0.2, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.95462, 1, 0.266667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.934273, 1, 0.333333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0.969265, 1, 0.4, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.01941, 1, 0.466667, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.04012, 1, 0.533333, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1.01505, 1, 0.6, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0.75, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=11]
-resource_name = "battering_rat_armatureAction"
+[sub_resource type="Animation" id=12]
 length = 0.001
 tracks/0/type = "transform"
 tracks/0/path = NodePath("battering_rat_armature/Skeleton:torso")
@@ -895,13 +895,13 @@ attack = 50
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="blue" type="Spatial" parent="."]
 transform = Transform( -0.5, 0, -1.62921e-07, 0, 0.5, 0, 1.62921e-07, 0, -0.5, 0, 0, 0 )
@@ -978,12 +978,12 @@ bones/12/bound_children = [  ]
 [node name="battering_rat" type="MeshInstance" parent="blue/battering_rat_armature/Skeleton"]
 mesh = SubResource( 3 )
 skin = SubResource( 4 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blue"]
 autoplay = "walk"
-anims/attack = SubResource( 17 )
-anims/battering_rat_armatureAction = SubResource( 18 )
+anims/attack = SubResource( 5 )
+anims/battering_rat_armatureAction = SubResource( 6 )
 anims/hurt = SubResource( 7 )
 anims/walk = SubResource( 8 )
 
@@ -1062,12 +1062,12 @@ bones/12/bound_children = [  ]
 [node name="battering_rat" type="MeshInstance" parent="red/battering_rat_armature/Skeleton"]
 mesh = SubResource( 9 )
 skin = SubResource( 10 )
-material/0 = null
+material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="red"]
 autoplay = "walk"
-anims/attack = SubResource( 12 )
-anims/battering_rat_armatureAction = SubResource( 11 )
+anims/attack = SubResource( 11 )
+anims/battering_rat_armatureAction = SubResource( 12 )
 anims/hurt = SubResource( 13 )
 anims/walk = SubResource( 14 )
 

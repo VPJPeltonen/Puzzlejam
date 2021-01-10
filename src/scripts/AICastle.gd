@@ -1,4 +1,4 @@
-extends MeshInstance
+extends Position3D
 
 var health: int = 100
 

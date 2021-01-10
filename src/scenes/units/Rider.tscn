@@ -920,7 +920,7 @@ bones/10/bound_children = [  ]
 [node name="knight" type="MeshInstance" parent="red/Knight_Armature/Skeleton"]
 mesh = SubResource( 9 )
 skin = SubResource( 10 )
-material/0 = null
+material/0 = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="red"]
 autoplay = "walk"

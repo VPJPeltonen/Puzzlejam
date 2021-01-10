@@ -57,7 +57,7 @@ func _on_Area_area_shape_entered(area_id, area, area_shape, self_shape):
 				$blue/AnimationPlayer.play("attack")
 				$red/AnimationPlayer.play("attack")
 			area.get_parent().damage(attack)
-			if projectile and !area.get_parent().dying:
+			if projectile:
 				queue_free()
 
 func _on_DeathTimer_timeout():

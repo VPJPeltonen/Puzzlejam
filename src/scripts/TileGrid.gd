@@ -9,8 +9,8 @@ var ready_to_spawn: Array = []
 var mobs_to_spawn: Array = []
 
 var width: int = 6
-var height: int = 6
-var tile_size: int = 34
+var height: int = 5
+var tile_size: int = 32
 var tile_types: Array = ["iron","wood","magic","nature"]
 
 var active_tiles: Array
@@ -39,8 +39,8 @@ func generate_grid() -> void:
 			var num: int = rng.randi_range(0,tile_types.size()-1)
 			var new_tile = tile.instance()
 			add_child(new_tile)
-			new_tile.rect_position = Vector2(x*tile_size,y*tile_size)
-			new_tile.target_pos = Vector2(x*tile_size,y*tile_size)
+			new_tile.rect_position = Vector2(8+x*tile_size,8+y*tile_size)
+			new_tile.target_pos = Vector2(8+x*tile_size,8+y*tile_size)
 			new_tile.x = x
 			new_tile.y = y
 			grid[x][y] = new_tile
@@ -53,7 +53,7 @@ func generate_grid() -> void:
 				temp_type = tile_types[num]
 				new_tile.set_type(temp_type)
 				try += 1
-	$SummonButton.rect_position = Vector2((width+1)*tile_size,rect_position.y)
+	#$SummonButton.rect_position = Vector2((width+1)*tile_size,rect_position.y)
 
 func type_match(x,y,type) -> bool:
 	if x > 1:
