@@ -24,11 +24,17 @@ var moving: bool = false
 var target_pos: Vector2
 var slide_speed: float = 5.0
 
+var mouse_follow: bool = false
+
 func _process(delta):
-	if moving:
-		rect_position = rect_position.linear_interpolate(target_pos,slide_speed*delta)
-		if rect_position == target_pos:
-			moving = false
+	if mouse_follow:
+		rect_position = Vector2(get_global_mouse_position().x-16,get_global_mouse_position().y-16)
+		return
+	#if moving:
+	rect_position = rect_position.linear_interpolate(target_pos,slide_speed*delta)
+	if rect_position == target_pos:
+		moving = false
+			
 
 func set_type(newtype: String) -> void:
 	$ColorRect.color = Color(0,0,0)
@@ -48,7 +54,7 @@ func get_data() -> Dictionary:
 	var data = {}
 	data.x = x
 	data.y = y
-	data.pos = rect_position
+	data.pos = target_pos
 	return data
 
 func set_data(data: Dictionary) -> void:
@@ -96,6 +102,26 @@ func _on_TextureButton_pressed():
 	print("x:" + str(x) + " y:" + str(y) + " type:" + type)
 	if $TextureButton.pressed:
 		$TextureButton.modulate = Color(0.5,0.5,0.5)
-		get_parent().button_clicked(self)
+		#get_parent().button_clicked(self)
 	else:
 		$TextureButton.modulate = Color(1,1,1)
+
+func _on_TextureButton_button_down():
+	$TextureButton.modulate = Color(0.5,0.5,0.5)
+	mouse_follow = true
+
+func _on_TextureButton_button_up():
+	mouse_follow = false
+	$TextureButton.modulate = Color(1,1,1)
+	var x_dif = target_pos.x - rect_position.x
+	var y_dif = target_pos.y - rect_position.y
+	if abs(x_dif) < abs(y_dif):
+		if y_dif < 0:
+			get_parent().tile_slide(self,"down")
+		else:
+			get_parent().tile_slide(self,"up")
+	else:
+		if x_dif < 0:
+			get_parent().tile_slide(self,"right")
+		else:
+			get_parent().tile_slide(self,"left")

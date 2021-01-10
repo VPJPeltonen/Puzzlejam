@@ -40,6 +40,7 @@ func generate_grid() -> void:
 			var new_tile = tile.instance()
 			add_child(new_tile)
 			new_tile.rect_position = Vector2(x*tile_size,y*tile_size)
+			new_tile.target_pos = Vector2(x*tile_size,y*tile_size)
 			new_tile.x = x
 			new_tile.y = y
 			grid[x][y] = new_tile
@@ -81,6 +82,38 @@ func button_clicked(button: Object) -> void:
 		for tile in active_tiles:
 			tile.clear_pressed()
 		active_tiles.clear()
+
+func tile_slide(button: Object,dir: String) -> void:
+	active_tiles.append(button)
+	var tile_1 = active_tiles[0].get_data()
+	match dir:
+		"up":
+			if tile_1.y-1 < 0:
+				return
+			active_tiles.append(grid[tile_1.x][tile_1.y-1])
+		"right":
+			if tile_1.x+1 > width-1:
+				return
+			active_tiles.append(grid[tile_1.x+1][tile_1.y])
+		"down":
+			if tile_1.y+1 > height-1:
+				return
+			active_tiles.append(grid[tile_1.x][tile_1.y+1])
+		"left":
+			if tile_1.x-1 < 0:
+				return			
+			active_tiles.append(grid[tile_1.x-1][tile_1.y])
+	var tile_2 = active_tiles[1].get_data()
+	if is_valid(tile_1,tile_2):
+		$moveSound.play()
+		active_tiles[0].set_data(tile_2)
+		active_tiles[1].set_data(tile_1)		
+		grid[tile_1.x][tile_1.y] = active_tiles[1]
+		grid[tile_2.x][tile_2.y] = active_tiles[0]
+		check_for_units([tile_2,tile_2])
+	for tile in active_tiles:
+		tile.clear_pressed()
+	active_tiles.clear()			
 
 func is_valid(tile_1: Dictionary,tile_2: Dictionary) -> bool:
 	if tile_1.x == tile_2.x: # same row

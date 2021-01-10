@@ -59,4 +59,7 @@ stretch_mode = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="focus_exited" from="." to="." method="_on_Tile_focus_exited"]
+[connection signal="button_down" from="TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
