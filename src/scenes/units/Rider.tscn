@@ -5,7 +5,7 @@
 [ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=3]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=4]
 
-[sub_resource type="CylinderShape" id=15]
+[sub_resource type="CylinderShape" id=1]
 
 [sub_resource type="CylinderShape" id=2]
 radius = 0.704087
@@ -25,7 +25,7 @@ surfaces/0 = {
 "vertex_count": 446
 }
 
-[sub_resource type="Skin" id=16]
+[sub_resource type="Skin" id=4]
 resource_name = "Skin"
 bind_count = 11
 bind/0/name = "bone"
@@ -62,7 +62,7 @@ bind/10/name = "cape_2"
 bind/10/bone = -1
 bind/10/pose = Transform( 1.61931e-07, 0.405164, -0.914244, 2.68742e-07, -0.914244, -0.405163, -0.999999, 8.72146e-08, -1.96798e-07, -0.623781, 0.332097, -1.36833e-07 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=5]
 resource_name = "Knight_ArmatureAction"
 length = 0.001
 tracks/0/type = "transform"
@@ -143,7 +143,7 @@ tracks/10/imported = true
 tracks/10/enabled = true
 tracks/10/keys = PoolRealArray( 0, 1, 0, 0, 0, -9.0278e-36, -7.10543e-15, 4.23516e-22, 1, 1, 1, 1 )
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=6]
 resource_name = "attack"
 length = 1.45833
 tracks/0/type = "transform"
@@ -773,7 +773,7 @@ health = 30
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-shape = SubResource( 15 )
+shape = SubResource( 1 )
 disabled = true
 
 [node name="Area" type="Area" parent="."]
@@ -845,13 +845,13 @@ bones/10/bound_children = [  ]
 
 [node name="knight" type="MeshInstance" parent="blue/Knight_Armature/Skeleton"]
 mesh = SubResource( 3 )
-skin = SubResource( 16 )
+skin = SubResource( 4 )
 material/0 = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="blue"]
 autoplay = "walk"
-anims/Knight_ArmatureAction = SubResource( 17 )
-anims/attack = SubResource( 18 )
+anims/Knight_ArmatureAction = SubResource( 5 )
+anims/attack = SubResource( 6 )
 anims/hurt = SubResource( 7 )
 anims/walk = SubResource( 8 )
 

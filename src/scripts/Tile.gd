@@ -20,6 +20,16 @@ var active_type: String = "none"
 var x: int 
 var y: int
 
+var moving: bool = false
+var target_pos: Vector2
+var slide_speed: float = 5.0
+
+func _process(delta):
+	if moving:
+		rect_position = rect_position.linear_interpolate(target_pos,slide_speed*delta)
+		if rect_position == target_pos:
+			moving = false
+
 func set_type(newtype: String) -> void:
 	$ColorRect.color = Color(0,0,0)
 	type = newtype
@@ -44,7 +54,9 @@ func get_data() -> Dictionary:
 func set_data(data: Dictionary) -> void:
 	x = data.x
 	y = data.y
-	rect_position = data.pos
+	#rect_position = data.pos
+	target_pos = data.pos
+	moving = true
 
 func change_tex(tex: Texture) -> void:
 	$TextureButton.texture_normal = tex
