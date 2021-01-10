@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=2]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=4]
+[ext_resource path="res://src/scenes/effects/BloodExplosion.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -506,7 +507,7 @@ bind/12/name = "rat_foot_2_r"
 bind/12/bone = -1
 bind/12/pose = Transform( -0.160927, -0.0241959, 0.98667, 0.986959, 5.75092e-08, 0.160974, -0.00389499, 0.999707, 0.0238805, 0.65971, -0.519258, -0.013831 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=15]
 resource_name = "attack"
 length = 0.75
 tracks/0/type = "transform"
@@ -890,6 +891,7 @@ tracks/12/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, -0.0613417, 0, 0.998117, 1, 1,
 "mob",
 ]]
 script = ExtResource( 1 )
+DeathParticles = ExtResource( 5 )
 speed = 75
 attack = 50
 
@@ -1066,7 +1068,7 @@ material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="red"]
 autoplay = "walk"
-anims/attack = SubResource( 11 )
+anims/attack = SubResource( 15 )
 anims/battering_rat_armatureAction = SubResource( 12 )
 anims/hurt = SubResource( 13 )
 anims/walk = SubResource( 14 )

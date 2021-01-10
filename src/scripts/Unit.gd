@@ -1,5 +1,7 @@
 extends KinematicBody
 
+export(PackedScene) var DeathParticles
+
 var target: Object
 var side: String
 var projectile: bool = false
@@ -46,6 +48,9 @@ func _on_Area_body_entered(body):
 		if body.side != side:
 			body.damage(attack)
 			if projectile:
+				if DeathParticles != null:
+					var newD = DeathParticles.instance()
+					get_parent().add_child(newD)
 				queue_free()
 
 func _on_Area_area_shape_entered(area_id, area, area_shape, self_shape):
@@ -58,9 +63,17 @@ func _on_Area_area_shape_entered(area_id, area, area_shape, self_shape):
 				$red/AnimationPlayer.play("attack")
 			area.get_parent().damage(attack)
 			if projectile:
+				if DeathParticles != null:
+					var newD = DeathParticles.instance()
+					newD.transform = transform
+					get_parent().add_child(newD)
 				queue_free()
 
 func _on_DeathTimer_timeout():
+	if DeathParticles != null:
+		var newD = DeathParticles.instance()
+		newD.transform = transform
+		get_parent().add_child(newD)	
 	queue_free()
 
 

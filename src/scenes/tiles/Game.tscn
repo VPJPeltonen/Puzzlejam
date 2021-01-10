@@ -124,7 +124,7 @@ volume_db = -10.0
 
 [node name="succesSound" type="AudioStreamPlayer" parent="UI/TileGrid"]
 stream = ExtResource( 20 )
-volume_db = -25.0
+volume_db = -15.0
 
 [node name="PlayerHealth" type="ProgressBar" parent="UI"]
 anchor_top = 1.0
@@ -199,7 +199,7 @@ __meta__ = {
 }
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.902915, 0.429818, 0, -0.429818, 0.902915, 0, 8.47066, 19.8419 )
+transform = Transform( 1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 9, 21 )
 environment = SubResource( 7 )
 fov = 40.0
 

@@ -159,7 +159,7 @@ stream = ExtResource( 2 )
 volume_db = -10.0
 
 [node name="red" type="Spatial" parent="."]
-transform = Transform( 2.98122e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.98122e-09, 0, -0.515125, 0 )
+transform = Transform( 2.98122e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.98122e-09, 0, -0.515125, -0.439083 )
 
 [node name="wall_armature" type="Spatial" parent="red"]
 
@@ -185,7 +185,7 @@ anims/walk = SubResource( 9 )
 anims/wall_armatureAction = SubResource( 10 )
 
 [node name="blue" type="Spatial" parent="."]
-transform = Transform( 2.98122e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.98122e-09, 0, -0.515125, 0 )
+transform = Transform( 2.98122e-09, 0, -0.25, 0, 0.25, 0, 0.25, 0, 2.98122e-09, 0, -0.515125, -0.439083 )
 
 [node name="wall_armature" type="Spatial" parent="blue"]
 

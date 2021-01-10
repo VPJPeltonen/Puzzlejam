@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/scripts/Unit.gd" type="Script" id=1]
 [ext_resource path="res://assets/models/Material.material" type="Material" id=2]
 [ext_resource path="res://assets/audio/Death 1.wav" type="AudioStream" id=3]
 [ext_resource path="res://src/materials/main_spatialmaterial.tres" type="Material" id=4]
+[ext_resource path="res://src/scenes/effects/BloodExplosion.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -395,6 +396,7 @@ tracks/4/keys = PoolRealArray( 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
 "mob",
 ]]
 script = ExtResource( 1 )
+DeathParticles = ExtResource( 5 )
 attack = 50
 health = 20
 
