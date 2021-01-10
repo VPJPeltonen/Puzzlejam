@@ -17,17 +17,17 @@ height = 0.977556
 ]]
 collision_layer = 16
 script = ExtResource( 1 )
-speed = 150
+speed = 250
 attack = 20
-health = 1
+health = 1000
 
 [node name="blue" type="MeshInstance" parent="."]
-transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0, 0 )
+transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0.591884, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
 [node name="red" type="MeshInstance" parent="."]
-transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0, 0 )
+transform = Transform( 0.1, 0, 0, 0, -0.0043371, -0.0999962, 0, 0.499981, -0.00086742, 0, 0.591884, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
