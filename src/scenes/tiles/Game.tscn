@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://src/scripts/TileGrid.gd" type="Script" id=1]
 [ext_resource path="res://src/scenes/tiles/Tile.tscn" type="PackedScene" id=2]
@@ -33,6 +33,11 @@
 [ext_resource path="res://assets/textures/tiles/blue_health.png" type="Texture" id=31]
 [ext_resource path="res://assets/textures/tiles/red_healthBar.png" type="Texture" id=32]
 [ext_resource path="res://assets/textures/tiles/blue_healthBar.png" type="Texture" id=33]
+[ext_resource path="res://assets/textures/buttons/unknown3.png" type="Texture" id=34]
+[ext_resource path="res://assets/textures/buttons/unknown.png" type="Texture" id=35]
+[ext_resource path="res://assets/textures/buttons/unknown2.png" type="Texture" id=36]
+[ext_resource path="res://assets/textures/buttons/loss.png" type="Texture" id=37]
+[ext_resource path="res://assets/textures/buttons/win.png" type="Texture" id=38]
 
 [sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 33 )
@@ -271,41 +276,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RestartButton" type="Button" parent="LoseScreen"]
+[node name="RestartButton" type="TextureButton" parent="LoseScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -35.5
-margin_top = -10.0
-margin_right = 35.5
-margin_bottom = 10.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="LoseScreen/RestartButton"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -35.5
-margin_top = -10.0
-margin_right = 35.5
-margin_bottom = 10.0
-text = "Restart"
-align = 1
-valign = 1
-
-[node name="Label" type="Label" parent="LoseScreen"]
-anchor_left = 0.5
-anchor_top = 0.2
-anchor_right = 0.5
-anchor_bottom = 0.2
-margin_left = -28.5
-margin_right = 28.5
+margin_left = -51.0
+margin_top = -14.0
+margin_right = 51.0
 margin_bottom = 14.0
-text = "You Lose"
+rect_min_size = Vector2( 102, 28 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 34 )
+texture_hover = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
+texture_focused = ExtResource( 36 )
+expand = true
+
+[node name="TextureRect" type="TextureRect" parent="LoseScreen"]
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+margin_left = -256.0
+margin_right = 256.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 512, 160 )
+texture = ExtResource( 37 )
+expand = true
 
 [node name="WinScreen" type="Control" parent="."]
 visible = false
@@ -315,47 +313,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueButton" type="Button" parent="WinScreen"]
+[node name="ContinueButton" type="TextureButton" parent="WinScreen"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -35.5
-margin_top = -10.0
-margin_right = 35.5
-margin_bottom = 10.0
+margin_left = -51.0
+margin_top = -14.0
+margin_right = 51.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 102, 28 )
+texture_normal = ExtResource( 36 )
+texture_pressed = ExtResource( 34 )
+texture_hover = ExtResource( 35 )
+texture_disabled = ExtResource( 36 )
+texture_focused = ExtResource( 36 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="WinScreen/ContinueButton"]
+[node name="TextureRect" type="TextureRect" parent="WinScreen"]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.1
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -35.5
-margin_top = -10.0
-margin_right = 35.5
-margin_bottom = 10.0
-text = "Continue"
-align = 1
-valign = 1
-
-[node name="Label" type="Label" parent="WinScreen"]
-anchor_left = 0.5
-anchor_top = 0.3
-anchor_right = 0.5
-anchor_bottom = 0.3
-margin_left = -96.5
-margin_top = -15.5
-margin_right = 96.5
-margin_bottom = 15.5
-text = "You passed the level
-You can continue to next level"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+anchor_bottom = 0.1
+margin_left = -256.0
+margin_right = 256.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 512, 160 )
+texture = ExtResource( 38 )
+expand = true
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.719219, 0.694784, 0, -0.694784, 0.719219, 0, 11.2141, 0 )
